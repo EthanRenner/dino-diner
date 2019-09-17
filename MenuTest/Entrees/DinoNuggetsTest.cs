@@ -74,10 +74,6 @@ namespace DinoDiner.MenuTest.Entrees
             Assert.Equal(dn.Price, 5.0, 2);
         }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 39760e9d1e06d3199ac9751c9f1686bde505c7c5
         [Fact]
         public void AddingNuggetsShouldIncreaseCalories()
         {
