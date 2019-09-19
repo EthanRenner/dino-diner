@@ -14,17 +14,18 @@ namespace DinoDiner.Menu.Entrees
     /// </summary>
     public class VelociWrap
     {
-        /// <summary>
-        /// Whether the entree has the given ingredient.
-        /// </summary>
+        // Private variables
         private bool dressing = true;
         private bool cheese = true;
         private bool lettuce = true;
 
         /// <summary>
-        /// Gives the price and the calories of this entree.
+        /// Gives the price of this entree.
         /// </summary>
         public double Price { get; set; }
+        /// <summary>
+        /// Gives the calories of this entree.
+        /// </summary>
         public uint Calories { get; set; }
 
         /// <summary>

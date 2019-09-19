@@ -17,6 +17,9 @@ namespace DinoDiner.Menu.Entrees
         /// Gives the price and the calories of this entree.
         /// </summary>
         public double Price { get; set; }
+        /// <summary>
+        /// Gives the calories of this entree.
+        /// </summary>
         public uint Calories { get; set; }
 
         /// <summary>

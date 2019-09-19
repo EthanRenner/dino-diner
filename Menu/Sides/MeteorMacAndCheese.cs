@@ -61,7 +61,7 @@ namespace DinoDiner.Menu.Sides
             {
                 List<String> ingredients = new List<string>();
                 ingredients.Add("Macaroni Noodles");
-                ingredients.Add("Pork Sausuage");
+                ingredients.Add("Pork Sausage");
                 ingredients.Add("Cheese Product");
                 return ingredients;
             }

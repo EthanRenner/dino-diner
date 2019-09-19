@@ -14,17 +14,18 @@ namespace DinoDiner.Menu.Entrees
     /// </summary>
     public class DinoNuggets
     {
-        /// <summary>
-        /// Counting the number of nuggets in the entree, and proportions for calories per nugget and price per nugget
-        /// </summary>
+        //private variables
         private uint NumberOfNuggets;
         static uint CaloriesPerNugget = 59;
         static double PricePerExtraNugget = .25;
 
         /// <summary>
-        /// Gives the price and the calories of this entree.
+        /// Gives the price of this entree.
         /// </summary>
         public double Price { get; set; }
+        /// <summary>
+        /// Gives the calories of this entree.
+        /// </summary>
         public uint Calories { get; set; }
 
         /// <summary>

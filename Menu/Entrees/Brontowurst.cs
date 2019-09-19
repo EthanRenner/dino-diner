@@ -14,17 +14,18 @@ namespace DinoDiner.Menu.Entrees
     /// </summary>
     public class Brontowurst
     {
-        /// <summary>
-        /// Whether the entree has the given ingredient.
-        /// </summary>
+        // Private variables
         private bool bun = true;
         private bool peppers = true;
         private bool onions = true;
 
         /// <summary>
-        /// Gives the price and the calories of this entree.
+        /// Gives the price of this entree.
         /// </summary>
         public double Price { get; set; }
+        /// <summary>
+        /// Gives the calories of this entree.
+        /// </summary>
         public uint Calories { get; set; }
 
         /// <summary>

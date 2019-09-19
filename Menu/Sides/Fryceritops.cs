@@ -62,7 +62,7 @@ namespace DinoDiner.Menu.Sides
                 List<String> ingredients = new List<string>();
                 ingredients.Add("Potato");
                 ingredients.Add("Salt");
-                ingredients.Add("Vegtable Oil");
+                ingredients.Add("Vegetable Oil");
                 return ingredients;
             }
         }

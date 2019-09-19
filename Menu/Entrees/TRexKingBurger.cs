@@ -14,9 +14,7 @@ namespace DinoDiner.Menu.Entrees
     /// </summary>
     public class TRexKingBurger
     {
-        /// <summary>
-        /// Whether the entree has the given ingredient.
-        /// </summary>
+        // Private variables
         private bool bun = true;
         private bool pickle = true;
         private bool ketchup = true;
@@ -30,6 +28,9 @@ namespace DinoDiner.Menu.Entrees
         /// Gives the price and the calories of this entree.
         /// </summary>
         public double Price { get; set; }
+        /// <summary>
+        /// Gives the calories of this entree.
+        /// </summary>
         public uint Calories { get; set; }
 
         /// <summary>

@@ -11,14 +11,14 @@
             It should implement methods for holding the bun, peppers, and onions.
             </summary>
         </member>
-        <member name="F:DinoDiner.Menu.Entrees.Brontowurst.bun">
-            <summary>
-            Whether the entree has the given ingredient.
-            </summary>
-        </member>
         <member name="P:DinoDiner.Menu.Entrees.Brontowurst.Price">
             <summary>
-            Gives the price and the calories of this entree.
+            Gives the price of this entree.
+            </summary>
+        </member>
+        <member name="P:DinoDiner.Menu.Entrees.Brontowurst.Calories">
+            <summary>
+            Gives the calories of this entree.
             </summary>
         </member>
         <member name="P:DinoDiner.Menu.Entrees.Brontowurst.Ingredients">
@@ -53,14 +53,14 @@
             It should implement methods for adding a nugget at an additional $0.25.
             </summary>
         </member>
-        <member name="F:DinoDiner.Menu.Entrees.DinoNuggets.NumberOfNuggets">
-            <summary>
-            Counting the number of nuggets in the entree, and proportions for calories per nugget and price per nugget
-            </summary>
-        </member>
         <member name="P:DinoDiner.Menu.Entrees.DinoNuggets.Price">
             <summary>
-            Gives the price and the calories of this entree.
+            Gives the price of this entree.
+            </summary>
+        </member>
+        <member name="P:DinoDiner.Menu.Entrees.DinoNuggets.Calories">
+            <summary>
+            Gives the calories of this entree.
             </summary>
         </member>
         <member name="P:DinoDiner.Menu.Entrees.DinoNuggets.Ingredients">
@@ -78,6 +78,41 @@
             Adds another chicken nugget to the order.
             </summary>
         </member>
+        <member name="T:DinoDiner.Menu.Entrees.PrehistoricPBJ">
+            <summary>
+            Implement a class to represent the PrehistoricPBJ entree.
+            </summary>
+        </member>
+        <member name="P:DinoDiner.Menu.Entrees.PrehistoricPBJ.Price">
+            <summary>
+            Gives the price of this entree.
+            </summary>
+        </member>
+        <member name="P:DinoDiner.Menu.Entrees.PrehistoricPBJ.Calories">
+            <summary>
+            Gives the calories of this entree.
+            </summary>
+        </member>
+        <member name="P:DinoDiner.Menu.Entrees.PrehistoricPBJ.Ingredients">
+            <summary>
+            Gives list of all the ingredients in this entree.
+            </summary>
+        </member>
+        <member name="M:DinoDiner.Menu.Entrees.PrehistoricPBJ.#ctor">
+            <summary>
+            Initialize price to 6.52 and calories to 483.
+            </summary>
+        </member>
+        <member name="M:DinoDiner.Menu.Entrees.PrehistoricPBJ.HoldPeanutButter">
+            <summary>
+            Remove peanut butter from this entree.
+            </summary>
+        </member>
+        <member name="M:DinoDiner.Menu.Entrees.PrehistoricPBJ.HoldJelly">
+            <summary>
+            Remove jelly from this entree.
+            </summary>
+        </member>
         <member name="T:DinoDiner.Menu.Entrees.PterodactylWings">
             <summary>
             Implement a class to represent the Pterodactyl Wings entree. 
@@ -87,6 +122,11 @@
         <member name="P:DinoDiner.Menu.Entrees.PterodactylWings.Price">
             <summary>
             Gives the price and the calories of this entree.
+            </summary>
+        </member>
+        <member name="P:DinoDiner.Menu.Entrees.PterodactylWings.Calories">
+            <summary>
+            Gives the calories of this entree.
             </summary>
         </member>
         <member name="P:DinoDiner.Menu.Entrees.PterodactylWings.Ingredients">
@@ -106,14 +146,14 @@
             It should implement methods for holding the bun, pickle, ketchup, and mustard.
             </summary>
         </member>
-        <member name="F:DinoDiner.Menu.Entrees.SteakosaurusBurger.bun">
-            <summary>
-            Whether the entree has the given ingredient.
-            </summary>
-        </member>
         <member name="P:DinoDiner.Menu.Entrees.SteakosaurusBurger.Price">
             <summary>
             Gives the price and the calories of this entree.
+            </summary>
+        </member>
+        <member name="P:DinoDiner.Menu.Entrees.SteakosaurusBurger.Calories">
+            <summary>
+            Gives the calories of this entree.
             </summary>
         </member>
         <member name="P:DinoDiner.Menu.Entrees.SteakosaurusBurger.Ingredients">
@@ -153,14 +193,14 @@
             It should implement methods for holding the bun, lettuce, tomato, onion, pickle, ketchup, mustard, and mayo.
             </summary>
         </member>
-        <member name="F:DinoDiner.Menu.Entrees.TRexKingBurger.bun">
-            <summary>
-            Whether the entree has the given ingredient.
-            </summary>
-        </member>
         <member name="P:DinoDiner.Menu.Entrees.TRexKingBurger.Price">
             <summary>
             Gives the price and the calories of this entree.
+            </summary>
+        </member>
+        <member name="P:DinoDiner.Menu.Entrees.TRexKingBurger.Calories">
+            <summary>
+            Gives the calories of this entree.
             </summary>
         </member>
         <member name="P:DinoDiner.Menu.Entrees.TRexKingBurger.Ingredients">
@@ -220,14 +260,14 @@
             It should implement methods to hold the dressing, lettuce, and cheese.
             </summary>
         </member>
-        <member name="F:DinoDiner.Menu.Entrees.VelociWrap.dressing">
-            <summary>
-            Whether the entree has the given ingredient.
-            </summary>
-        </member>
         <member name="P:DinoDiner.Menu.Entrees.VelociWrap.Price">
             <summary>
-            Gives the price and the calories of this entree.
+            Gives the price of this entree.
+            </summary>
+        </member>
+        <member name="P:DinoDiner.Menu.Entrees.VelociWrap.Calories">
+            <summary>
+            Gives the calories of this entree.
             </summary>
         </member>
         <member name="P:DinoDiner.Menu.Entrees.VelociWrap.Ingredients">
