@@ -20,7 +20,7 @@ namespace DinoDiner.MenuTest.Drinks
         }
 
         [Fact]
-        public void CorrectPriceCaloriesAfterSizeChanges()
+        public void CorrectSizeChanges()
         {
             Tyrannotea s = new Tyrannotea();
             s.Size = Size.Large;
@@ -36,7 +36,7 @@ namespace DinoDiner.MenuTest.Drinks
 
 
         [Fact]
-        public void CorrectPriceCaloriesAfterSizeChangesWithSweetness()
+        public void CorrectWithSweetness()
         {
             Tyrannotea s = new Tyrannotea();
             s.Sweet = true;
@@ -52,8 +52,10 @@ namespace DinoDiner.MenuTest.Drinks
         }
 
         [Fact]
-        public void CorrectPriceCaloriesAfterSizeChangesWithoutSweetness()
+        public void CorrectWithoutSweetness()
         {
+            Assert.True(true);
+
             Tyrannotea s = new Tyrannotea();
             s.Sweet = true;
             s.Sweet = false;
@@ -62,7 +64,7 @@ namespace DinoDiner.MenuTest.Drinks
             Assert.Equal<uint>(32, s.Calories);
             s.Size = Size.Medium;
             Assert.Equal<double>(1.49, s.Price);
-            Assert.Equal<uint>(64, s.Calories);
+            Assert.Equal<uint>(16, s.Calories);
             s.Size = Size.Small;
             Assert.Equal<double>(.99, s.Price);
             Assert.Equal<uint>(8, s.Calories);
@@ -88,14 +90,17 @@ namespace DinoDiner.MenuTest.Drinks
         public void CorrectIngredients()
         {
             Tyrannotea s = new Tyrannotea();
-            Assert.Contains("Water", s.Ingredients);
-            Assert.Contains("Tea", s.Ingredients);
-            Assert.DoesNotContain("Cane Sugar", s.Ingredients);
-            Assert.DoesNotContain("Lemon", s.Ingredients);
+            List<string> temp = s.Ingredients;
+            Assert.Contains("Water", temp);
+            Assert.Contains("Tea", temp);
+            Assert.DoesNotContain("Cane Sugar", temp);
+            Assert.DoesNotContain("Lemon", temp);
             s.Sweet = true;
-            Assert.Contains("Cane Sugar", s.Ingredients);
-            s.Lemon = true;
-            Assert.Contains("Lemon", s.Ingredients);
+            s.AddLemon();
+            temp.Clear();
+            temp = s.Ingredients;
+            Assert.Contains("Cane Sugar", temp);
+            Assert.Contains("Lemon", temp);
         }
     }
 }

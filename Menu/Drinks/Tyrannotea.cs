@@ -70,8 +70,8 @@ namespace DinoDiner.Menu.Drinks
             get { return sweet; }
             set
             {
-                Sweet = value;
-                Size = Size;
+                sweet = value;
+                Size = size;
             }
         }
 

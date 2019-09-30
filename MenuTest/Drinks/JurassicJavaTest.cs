@@ -13,7 +13,6 @@ namespace DinoDiner.MenuTest.Drinks
             JurassicJava s = new JurassicJava();
             Assert.Equal<double>(.59, s.Price);
             Assert.Equal<uint>(2, s.Calories);
-            Assert.True(s.Ice);
             Assert.Equal<Size>(Size.Small, s.Size);
             Assert.False(s.RoomForCream);
             Assert.False(s.Ice);
