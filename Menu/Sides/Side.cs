@@ -5,13 +5,10 @@ using System.Text;
 namespace DinoDiner.Menu.Sides
 {
 
-    public enum Size
-    {
-        Small,
-        Medium, 
-        Large
-    }
 
+    /// <summary>
+    /// The abstract base class representing a side. Has price, calories, ingredients, and size.
+    /// </summary>
     public abstract class Side
     {
         /// <summary>
