@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
-namespace DinoDiner.Menu.Drinks
+namespace DinoDiner.Menu
 {
     /// <summary>
     /// Class representation of Sodasaurus an old-fashioned soda drink.
@@ -52,11 +50,11 @@ namespace DinoDiner.Menu.Drinks
         /// <summary>
         /// Property to get the ingredients list for this drink.
         /// </summary>
-        public override List<String> Ingredients
+        public override List<string> Ingredients
         {
             get
             {
-                List<string> ingredients = new List<String>();
+                List<string> ingredients = new List<string>();
                 ingredients.Add("Water");
                 ingredients.Add("Natural Flavors");
                 ingredients.Add("Cane Sugar");

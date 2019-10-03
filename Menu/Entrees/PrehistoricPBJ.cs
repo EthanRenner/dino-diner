@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 
-namespace DinoDiner.Menu.Entrees
+namespace DinoDiner.Menu
 {
     /// <summary>
     /// Implement a class to represent the PrehistoricPBJ entree.
     /// </summary>
-    public class PrehistoricPBJ
+    public class PrehistoricPBJ: Entree
     {
         // Private variables
         private bool peanutButter = true;

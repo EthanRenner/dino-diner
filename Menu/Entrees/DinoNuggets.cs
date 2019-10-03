@@ -1,18 +1,16 @@
 ﻿/* DinoNuggets.cs
  * Author: Ethan Renner
  */
-using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace DinoDiner.Menu.Entrees
+namespace DinoDiner.Menu
 {
     /// <summary>
     /// Implement a class to represent the Dino Nuggest entree. 
     /// Its price is $4.25, it contains 59 calories per nugget, and its ingredients are: 6 chicken nuggets. 
     /// It should implement methods for adding a nugget at an additional $0.25.
     /// </summary>
-    public class DinoNuggets
+    public class DinoNuggets: Entree
     {
         //private variables
         private uint NumberOfNuggets;

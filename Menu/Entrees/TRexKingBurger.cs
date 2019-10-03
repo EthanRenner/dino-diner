@@ -1,18 +1,16 @@
 ﻿/* TRexKingBurger.cs
  * Author: Ethan Renner
  */
-using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace DinoDiner.Menu.Entrees
+namespace DinoDiner.Menu
 {
     /// <summary>
     /// Implement a class to represent the T-Rex King Burger entree. 
     /// Its price is $8.45, it contains 728 calories, and its ingredients are: a whole wheat bun, three steakburger patties, lettuce, tomato, onion, pickle, ketchup, mustard, and mayo. 
     /// It should implement methods for holding the bun, lettuce, tomato, onion, pickle, ketchup, mustard, and mayo.
     /// </summary>
-    public class TRexKingBurger
+    public class TRexKingBurger: Entree
     {
         // Private variables
         private bool bun = true;

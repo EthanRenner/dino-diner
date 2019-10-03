@@ -3,28 +3,23 @@
 namespace DinoDiner.Menu
 {
     /// <summary>
-    /// The abstract base class representing a side. Has price, calories, ingredients, and size.
+    /// The abstract base class representing a side. Requires price, calories, and ingredients.
     /// </summary>
-    public abstract class Side: IMenuItem
+    public abstract class Entree: IMenuItem
     {
         /// <summary>
-        /// Price of side.
+        /// Price of entree.
         /// </summary>
         public abstract double Price { get; }
 
         /// <summary>
-        /// Amount of calories in the side.
+        /// Amount of calories in the entree.
         /// </summary>
         public abstract uint Calories { get; }
 
         /// <summary>
-        /// List of ingredients in the side.
+        /// List of ingredients in the entree.
         /// </summary>
         public abstract List<string> Ingredients { get; }
-
-        /// <summary>
-        /// Gets or sets the size
-        /// </summary>
-        public abstract Size Size { get; set; }
     }
 }

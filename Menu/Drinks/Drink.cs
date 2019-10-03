@@ -1,35 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using DinoDiner.Menu.Sides;
+﻿using System.Collections.Generic;
 
-namespace DinoDiner.Menu.Drinks
+namespace DinoDiner.Menu
 {
     /// <summary>
     /// The abstract base class representing a drink. 
     /// </summary>
-    public abstract class Drink
+    public abstract class Drink: IMenuItem
     {
         // Private variables for size and ice
         protected Size size = Size.Small;
         private bool ice = true;
 
         /// <summary>
-        /// Property for the price of a drink.
+        /// Price of entree.
         /// </summary>
-        public double Price { get; set; }
+        public abstract double Price { get; }
+
         /// <summary>
-        /// Property for the amount of calories in a drink.
+        /// Amount of calories in the entree.
         /// </summary>
-        public uint Calories { get; set; }
+        public abstract uint Calories { get; }
+
         /// <summary>
-        /// Property to get the list of ingredients in a drink.
+        /// List of ingredients in the entree.
         /// </summary>
-        public abstract List<String> Ingredients { get; }
+        public abstract List<string> Ingredients { get; }
+
         /// <summary>
         /// Property for the size of the drink.
         /// </summary>
         public abstract Size Size { get; set; }
+
         /// <summary>
         /// Property to get whether or not this drink has ice.
         /// </summary>
@@ -38,6 +39,7 @@ namespace DinoDiner.Menu.Drinks
             get { return ice; }
             set { ice = value; }
         }
+
         /// <summary>
         /// Sets the private ice variable to false.
         /// </summary>
@@ -45,7 +47,5 @@ namespace DinoDiner.Menu.Drinks
         {
             ice = false;
         }
-
-        
     }
 }

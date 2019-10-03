@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
-namespace DinoDiner.Menu.Sides
+namespace DinoDiner.Menu
 {
     /// <summary>
     /// Represents an order of MeteorMacAndCheese aka mac n cheese.
@@ -55,11 +53,11 @@ namespace DinoDiner.Menu.Sides
         /// <summary>
         /// Gets the list of ingredients for this side.
         /// </summary>
-        public override List<String> Ingredients
+        public override List<string> Ingredients
         {
             get
             {
-                List<String> ingredients = new List<string>();
+                List<string> ingredients = new List<string>();
                 ingredients.Add("Macaroni Noodles");
                 ingredients.Add("Pork Sausage");
                 ingredients.Add("Cheese Product");

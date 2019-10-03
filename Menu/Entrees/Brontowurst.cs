@@ -1,18 +1,16 @@
 ﻿/* Brontowurst.cs
  * Author: Ethan Renner
  */
-using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace DinoDiner.Menu.Entrees
+namespace DinoDiner.Menu
 {
     /// <summary>
     /// Implement a class to represent the Brontowurst entree. 
     /// Its price is $5.36, it contains 498 calories, and its ingredients are: brautwurst, whole-wheat bun, peppers, and onions. 
     /// It should implement methods for holding the bun, peppers, and onions.
     /// </summary>
-    public class Brontowurst
+    public class Brontowurst: Entree
     {
         // Private variables
         private bool bun = true;

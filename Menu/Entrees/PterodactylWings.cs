@@ -1,17 +1,15 @@
 ﻿/* PterodactylWings.cs
  * Author: Ethan Renner
  */
-using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace DinoDiner.Menu.Entrees
+namespace DinoDiner.Menu
 {
     /// <summary>
     /// Implement a class to represent the Pterodactyl Wings entree. 
     /// Its price is $7.21, it contains 318 calories, and its ingredients are: Chicken and Wing Sauce.
     /// </summary>
-    public class PterodactylWings
+    public class PterodactylWings: Entree
     {
         /// <summary>
         /// Gives the price and the calories of this entree.

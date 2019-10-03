@@ -1,18 +1,16 @@
 ﻿/* SteakosaurusBurger.cs
  * Author: Ethan Renner
  */
-using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace DinoDiner.Menu.Entrees
+namespace DinoDiner.Menu
 {
     /// <summary>
     /// Implement a class to represent the Steakosaurus Burger entree. 
     /// Its price is $5.15, it contains 621 calories, and its ingredients are: whole wheat bun, steakburger pattie, pickle, ketchup, and mustard. 
     /// It should implement methods for holding the bun, pickle, ketchup, and mustard.
     /// </summary>
-    public class SteakosaurusBurger
+    public class SteakosaurusBurger: Entree
     {
         // Private variables
         private bool bun = true;

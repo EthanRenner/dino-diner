@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DinoDiner.Menu.Drinks
+﻿namespace DinoDiner.Menu
 {
     /// <summary>
     /// Enum containing the possible sizes.

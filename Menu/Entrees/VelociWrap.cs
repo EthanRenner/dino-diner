@@ -1,18 +1,16 @@
 ﻿/* VelociWrap.cs
  * Author: Ethan Renner
  */
-using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace DinoDiner.Menu.Entrees
+namespace DinoDiner.Menu
 {
     /// <summary>
     /// Implement a class to represent the Veloci-Wrap entree. 
     /// Its price is $6.86, it contains 356 calories, and its ingredients are: a flour tortilla, chicken breast, romaine lettuce, Ceasar dressing, and parmesan cheese. 
     /// It should implement methods to hold the dressing, lettuce, and cheese.
     /// </summary>
-    public class VelociWrap
+    public class VelociWrap: Entree
     {
         // Private variables
         private bool dressing = true;
