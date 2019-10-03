@@ -88,5 +88,15 @@ namespace DinoDiner.Menu
         public void AddLemon() {
             Lemon = true;
         }
+
+        /// <summary>
+        /// Overrides to string to give accurate description of order.
+        /// </summary>
+        /// <returns>A string representation of this drink.</returns>
+        public override string ToString()
+        {
+            if (sweet) return $"{size} Sweet Tyrannotea";
+            else return $"{size} Tyrannotea";
+        }
     }
 }

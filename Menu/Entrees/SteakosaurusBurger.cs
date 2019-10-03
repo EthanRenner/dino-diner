@@ -17,20 +17,11 @@ namespace DinoDiner.Menu
         private bool pickle = true;
         private bool ketchup = true;
         private bool mustard = true;
-
-        /// <summary>
-        /// Gives the price and the calories of this entree.
-        /// </summary>
-        public double Price { get; set; }
-        /// <summary>
-        /// Gives the calories of this entree.
-        /// </summary>
-        public uint Calories { get; set; }
-
+        
         /// <summary>
         /// Gives list of all the ingredients in this entree.
         /// </summary>
-        public List<string> Ingredients
+        public override List<string> Ingredients
         {
             get
             {
@@ -83,6 +74,15 @@ namespace DinoDiner.Menu
         public void HoldMustard()
         {
             this.mustard = false;
+        }
+
+        /// <summary>
+        /// Overrides to string to give accurate description of order.
+        /// </summary>
+        /// <returns>A string representation of this entree.</returns>
+        public override string ToString()
+        {
+            return "Steakosaurus Burger";
         }
     }
 }

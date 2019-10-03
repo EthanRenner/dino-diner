@@ -92,5 +92,15 @@ namespace DinoDiner.Menu
         {
             Ice = true;
         }
+
+        /// <summary>
+        /// Overrides to string to give accurate description of order.
+        /// </summary>
+        /// <returns>A string representation of this drink.</returns>
+        public override string ToString()
+        {
+            if (decaf) return $"{Size} Decaf Jurassic Java";
+            else return $"{Size} Jurassic Java";
+        }
     }
 }

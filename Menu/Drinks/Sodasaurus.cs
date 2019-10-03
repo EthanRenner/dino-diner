@@ -61,5 +61,14 @@ namespace DinoDiner.Menu
                 return ingredients;
             }
         }
+
+        /// <summary>
+        /// Overrides to string to give accurate description of order.
+        /// </summary>
+        /// <returns>A string representation of this drink.</returns>
+        public override string ToString()
+        {
+            return $"{Size} {Flavor} Sodasaurus";
+        }
     }
 }

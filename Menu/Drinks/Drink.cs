@@ -14,12 +14,12 @@ namespace DinoDiner.Menu
         /// <summary>
         /// Price of entree.
         /// </summary>
-        public abstract double Price { get; }
+        public double Price { get; set; }
 
         /// <summary>
         /// Amount of calories in the entree.
         /// </summary>
-        public abstract uint Calories { get; }
+        public uint Calories { get; set; }
 
         /// <summary>
         /// List of ingredients in the entree.

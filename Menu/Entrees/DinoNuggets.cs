@@ -16,20 +16,11 @@ namespace DinoDiner.Menu
         private uint NumberOfNuggets;
         static uint CaloriesPerNugget = 59;
         static double PricePerExtraNugget = .25;
-
-        /// <summary>
-        /// Gives the price of this entree.
-        /// </summary>
-        public double Price { get; set; }
-        /// <summary>
-        /// Gives the calories of this entree.
-        /// </summary>
-        public uint Calories { get; set; }
-
+        
         /// <summary>
         /// Gives list of all the ingredients in this entree.
         /// </summary>
-        public List<string> Ingredients
+        public override List<string> Ingredients
         {
             get
             {
@@ -59,5 +50,13 @@ namespace DinoDiner.Menu
             this.Calories += CaloriesPerNugget;
         }
 
+        /// <summary>
+        /// Overrides to string to give accurate description of order.
+        /// </summary>
+        /// <returns>A string representation of this entree.</returns>
+        public override string ToString()
+        {
+            return "Dino-Nuggets";
+        }
     }
 }

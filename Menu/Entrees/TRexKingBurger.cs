@@ -21,20 +21,11 @@ namespace DinoDiner.Menu
         private bool tomato = true;
         private bool onion = true;
         private bool mayo = true;
-
-        /// <summary>
-        /// Gives the price and the calories of this entree.
-        /// </summary>
-        public double Price { get; set; }
-        /// <summary>
-        /// Gives the calories of this entree.
-        /// </summary>
-        public uint Calories { get; set; }
-
+        
         /// <summary>
         /// Gives list of all the ingredients in this entree.
         /// </summary>
-        public List<string> Ingredients
+        public override List<string> Ingredients
         {
             get
             {
@@ -123,6 +114,15 @@ namespace DinoDiner.Menu
         public void HoldLettuce()
         {
             this.lettuce = false;
+        }
+
+        /// <summary>
+        /// Overrides to string to give accurate description of order.
+        /// </summary>
+        /// <returns>A string representation of this entree.</returns>
+        public override string ToString()
+        {
+            return "T-Rex King Burger";
         }
     }
 }

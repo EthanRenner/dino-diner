@@ -64,5 +64,14 @@ namespace DinoDiner.Menu
                 return ingredients;
             }
         }
+
+        /// <summary>
+        /// Overrides to string to give accurate description of order.
+        /// </summary>
+        /// <returns>A string representation of this entree.</returns>
+        public override string ToString()
+        {
+            return $"{size} Friceritops";
+        }
     }
 }
