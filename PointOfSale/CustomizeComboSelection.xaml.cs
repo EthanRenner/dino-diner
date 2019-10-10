@@ -1,4 +1,4 @@
-﻿/* menuCategorySelection.xaml.cs
+﻿/* CustomizeComboSelection.xaml.cs
  * Author: Ethan Renner
  */
 using System.Windows;
@@ -7,25 +7,14 @@ using System.Windows.Navigation;
 
 namespace PointOfSale
 {
-
     /// <summary>
-    /// Interaction logic for MenuCategorySelection.xaml
+    /// Interaction logic for CustomizeComboSelection.xaml
     /// </summary>
-    public partial class MenuCategorySelection : Page
+    public partial class CustomizeComboSelection : Page
     {
-        public MenuCategorySelection()
+        public CustomizeComboSelection()
         {
             InitializeComponent();
-        }
-
-        /// <summary>
-        /// Navigates to the combo selection page.
-        /// </summary>
-        /// <param name="sender">Unused information about sender.</param>
-        /// <param name="args">Unused arguments about event.</param>
-        public void NavToCombos(object sender, RoutedEventArgs args)
-        {
-            NavigationService.Navigate(new ComboSelection());
         }
 
         /// <summary>
@@ -36,16 +25,6 @@ namespace PointOfSale
         public void NavToDrinks(object sender, RoutedEventArgs args)
         {
             NavigationService.Navigate(new DrinkSelection());
-        }
-
-        /// <summary>
-        /// Navigates to the entree selection page.
-        /// </summary>
-        /// <param name="sender">Unused information about sender.</param>
-        /// <param name="args">Unused arguments about event.</param>
-        public void NavToEntrees(object sender, RoutedEventArgs args)
-        {
-            NavigationService.Navigate(new EntreeSelection());
         }
 
         /// <summary>

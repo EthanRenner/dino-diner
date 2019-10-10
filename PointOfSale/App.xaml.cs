@@ -1,4 +1,7 @@
-﻿using System;
+﻿/* ComboSelection.xaml.cs
+ * Author: Ethan Renner
+ */
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;

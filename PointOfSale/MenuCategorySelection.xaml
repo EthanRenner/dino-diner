@@ -22,16 +22,16 @@
         </Grid.RowDefinitions>
         <Grid.Resources>
             <Style TargetType="Button">
-                <Setter Property="VerticalAlignment" Value="Stretch"></Setter>
-                <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
-                <Setter Property="Margin" Value="10"></Setter>
+                <Setter Property="VerticalAlignment" Value="Stretch"/>
+                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                <Setter Property="Margin" Value="10"/>
             </Style>
         </Grid.Resources>
-        <Button x:Name="uxComboButton"  Content="Combos"    Grid.Row="1" Grid.Column="0" Click="NavToCombos"/>
-        <Button x:Name="uxEntreeButton" Content="Entrees"   Grid.Row="1" Grid.Column="1"/>
-        <Button x:Name="uxSideButton"   Content="Sides"     Grid.Row="2" Grid.Column="0"/>
-        <Button x:Name="uxDrinkButton"  Content="Drinks"    Grid.Row="2" Grid.Column="1"/>
-        <Label x:Name="uxAddLabel" Grid.ColumnSpan="2" Content="Add To Order" HorizontalAlignment="Center" Height="40" Margin="10" VerticalAlignment="Center"/>
+        <Button Content="Combos"    Grid.Row="1" Grid.Column="0" Click="NavToCombos"/>
+        <Button Content="Entrees"   Grid.Row="1" Grid.Column="1" Click="NavToEntrees"/>
+        <Button Content="Sides"     Grid.Row="2" Grid.Column="0" Click="NavToSides"/>
+        <Button Content="Drinks"    Grid.Row="2" Grid.Column="1" Click="NavToDrinks"/>
+        <Label Grid.ColumnSpan="2" Content="Add To Order" HorizontalAlignment="Center" Height="40" Margin="10" VerticalAlignment="Center"/>
 
     </Grid>
 </Page>

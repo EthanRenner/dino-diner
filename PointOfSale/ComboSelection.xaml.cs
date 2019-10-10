@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/* ComboSelection.xaml.cs
+ * Author: Ethan Renner
+ */
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
-using DinoDiner.Menu;
 
 namespace PointOfSale
 {
@@ -21,14 +12,19 @@ namespace PointOfSale
     /// </summary>
     public partial class ComboSelection : Page
     {
-        private List<Button> buttons;
         public ComboSelection()
         {
             InitializeComponent();
         }
-        public void NavToSides(object sender, RoutedEventArgs args)
+
+        /// <summary>
+        /// Navigates to the customize combo selection page.
+        /// </summary>
+        /// <param name="sender">Unused information about sender.</param>
+        /// <param name="args">Unused arguments about event.</param>
+        public void NavToCustomizeCombos(object sender, RoutedEventArgs args)
         {
-            
+            NavigationService.Navigate(new CustomizeComboSelection());
         }
     }
 }

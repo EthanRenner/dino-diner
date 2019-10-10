@@ -1,0 +1,62 @@
+﻿<Page x:Class="PointOfSale.FlavorSelection"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PointOfSale"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="FlavorSelection">
+
+
+    <Grid x:Name="uxGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.Resources>
+            <Style TargetType="Button">
+                <Setter Property="Width" Value="175"/>
+                <Setter Property="Height" Value="80"/>
+                <Setter Property="Margin" Value="10"/>
+            </Style>
+            <Style TargetType="Image">
+                <Setter Property="Height" Value = "50"/>
+                <Setter Property="Margin" Value = "5"/>
+            </Style>
+            <Style TargetType="TextBlock">
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="TextAlignment" Value="Center"/>
+                <Setter Property="Margin" Value="5"/>
+                <Setter Property="FontSize" Value="16"/>
+            </Style>
+        </Grid.Resources>
+        <TextBlock Grid.Row="0" FontSize="20">Add To Order</TextBlock>
+        <WrapPanel Grid.Row="1">
+            <Button>
+                <TextBlock Text="Cherry"></TextBlock>
+            </Button>
+            <Button>
+                <TextBlock Text="Chocolate"></TextBlock>
+            </Button>
+            <Button>
+                <TextBlock Text="Cola"></TextBlock>
+            </Button>
+            <Button>
+                <TextBlock Text="Lime"></TextBlock>
+            </Button>
+            <Button>
+                <TextBlock Text="Orange"></TextBlock>
+            </Button>
+            <Button>
+                <TextBlock Text="Root Beer"></TextBlock>
+            </Button>
+            <Button>
+                <TextBlock Text="Vanilla"></TextBlock>
+            </Button>
+        </WrapPanel>
+    </Grid>
+</Page>
