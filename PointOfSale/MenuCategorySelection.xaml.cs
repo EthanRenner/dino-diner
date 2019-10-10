@@ -15,15 +15,26 @@ using System.Windows.Shapes;
 
 namespace PointOfSale
 {
+   
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MenuCategorySelection.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MenuCategorySelection : Page
     {
-        public MainWindow()
+        public MenuCategorySelection()
         {
             InitializeComponent();
+            uxComboButton.Click += LinkOnClick;
         }
 
+        public Frame Frame
+        {
+            get; set;
+        }
+
+        public void LinkOnClick(object sender, RoutedEventArgs args)
+        {
+            Frame.Navigate(new ComboSelection());
+        }
     }
 }

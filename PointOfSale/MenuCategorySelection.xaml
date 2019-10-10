@@ -1,0 +1,32 @@
+﻿<Page x:Class="PointOfSale.MenuCategorySelection"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PointOfSale"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MenuCategorySelection"
+      FontSize="20" 
+      ScrollViewer.HorizontalScrollBarVisibility="Auto" 
+      ScrollViewer.VerticalScrollBarVisibility="Auto"
+      MinHeight="200" MinWidth="200">
+
+    <Grid x:Name="uxGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition AllowDrop="True"/>
+            <ColumnDefinition AllowDrop="True"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition AllowDrop="True" Height="0.25*" MinHeight="50"/>
+            <RowDefinition AllowDrop="True" Height="1*"/>
+            <RowDefinition AllowDrop="True" Height="1*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="uxComboButton"  Content="Combos"    Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MinWidth="100" MinHeight="100" Grid.IsSharedSizeScope="True" Grid.Row="1" Grid.Column="0"/>
+        <Button x:Name="uxEntreeButton" Content="Entrees"   Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MinWidth="100" MinHeight="100" Grid.IsSharedSizeScope="True" Grid.Row="1" Grid.Column="1"/>
+        <Button x:Name="uxSideButton"   Content="Sides"     Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MinWidth="100" MinHeight="100" Grid.IsSharedSizeScope="True" Grid.Row="2" Grid.Column="0"/>
+        <Button x:Name="uxDrinkButton"  Content="Drinks"    Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MinWidth="100" MinHeight="100" Grid.IsSharedSizeScope="True" Grid.Row="2" Grid.Column="1"/>
+        <Label x:Name="uxAddLabel" Grid.ColumnSpan="2" Content="Add To Order" HorizontalAlignment="Center" Height="50" Margin="10,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Page>
