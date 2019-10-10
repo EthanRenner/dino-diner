@@ -21,11 +21,24 @@
             <RowDefinition AllowDrop="True" Height="2*"/>
         </Grid.RowDefinitions>
         <Label x:Name="uxAddLabel" Grid.ColumnSpan="2" Content="Add To Order" HorizontalAlignment="Center" Height="50" Margin="10,0" VerticalAlignment="Top"/>
-        <WrapPanel HorizontalAlignment="Stretch" Margin="10" Grid.Row="1" VerticalAlignment="Stretch">
-            <Button x:Name="uxBrontowurstComboButton" Content="Brontowurst Combo" Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MinWidth="200" MinHeight="150"/>
-            <Button x:Name="uxEntreeButton" Content="Entrees"   Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MinWidth="200" MinHeight="150"/>
-            <Button x:Name="uxSideButton"   Content="Sides"     Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MinWidth="200" MinHeight="150"/>
-            <Button x:Name="uxDrinkButton"  Content="Drinks"    Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MinWidth="200" MinHeight="150"/>
+        <WrapPanel Grid.Row="1">
+            <WrapPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Width" Value="200"></Setter>
+                    <Setter Property="Height" Value="150"></Setter>
+                    <Setter Property="Margin" Value="10"></Setter>
+                    <Setter Property="Height" Value="150"></Setter>
+                </Style>
+            </WrapPanel.Resources>
+            <Button x:Name="uxBrontowurstComboButton">
+                <StackPanel>
+                    <Image Source="Assets/DinoDiner-01.png" Height="50"/>
+                    <TextBlock Text="Brontowurst&#10;Combo" TextAlignment="Center"></TextBlock>
+                </StackPanel>
+            </Button>
+            <Button x:Name="uxEntreeButton" Content="Entrees"/>
+            <Button x:Name="uxSideButton"   Content="Sides"/>
+            <Button x:Name="uxDrinkButton"  Content="Drinks"/>
         </WrapPanel>
 
     </Grid>

@@ -24,17 +24,11 @@ namespace PointOfSale
         public MenuCategorySelection()
         {
             InitializeComponent();
-            uxComboButton.Click += LinkOnClick;
         }
 
-        public Frame Frame
+        public void NavToCombos(object sender, RoutedEventArgs args)
         {
-            get; set;
-        }
-
-        public void LinkOnClick(object sender, RoutedEventArgs args)
-        {
-            Frame.Navigate(new ComboSelection());
+            NavigationService.Navigate(new ComboSelection());
         }
     }
 }

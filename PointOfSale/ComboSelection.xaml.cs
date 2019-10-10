@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DinoDiner.Menu;
 
 namespace PointOfSale
 {
@@ -20,9 +21,14 @@ namespace PointOfSale
     /// </summary>
     public partial class ComboSelection : Page
     {
+        private List<Button> buttons;
         public ComboSelection()
         {
             InitializeComponent();
+        }
+        public void NavToSides(object sender, RoutedEventArgs args)
+        {
+            
         }
     }
 }

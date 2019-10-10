@@ -7,26 +7,31 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="MenuCategorySelection"
-      FontSize="20" 
-      ScrollViewer.HorizontalScrollBarVisibility="Auto" 
-      ScrollViewer.VerticalScrollBarVisibility="Auto"
-      MinHeight="200" MinWidth="200">
+      FontSize="20"
+      MinHeight="250" MinWidth="200">
 
-    <Grid x:Name="uxGrid">
+    <Grid x:Name="uxGrid" MinWidth="200" MinHeight="200">
         <Grid.ColumnDefinitions>
             <ColumnDefinition AllowDrop="True"/>
             <ColumnDefinition AllowDrop="True"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition AllowDrop="True" Height="0.25*" MinHeight="50"/>
+            <RowDefinition AllowDrop="True" Height="50"/>
             <RowDefinition AllowDrop="True" Height="1*"/>
             <RowDefinition AllowDrop="True" Height="1*"/>
         </Grid.RowDefinitions>
-        <Button x:Name="uxComboButton"  Content="Combos"    Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MinWidth="100" MinHeight="100" Grid.IsSharedSizeScope="True" Grid.Row="1" Grid.Column="0"/>
-        <Button x:Name="uxEntreeButton" Content="Entrees"   Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MinWidth="100" MinHeight="100" Grid.IsSharedSizeScope="True" Grid.Row="1" Grid.Column="1"/>
-        <Button x:Name="uxSideButton"   Content="Sides"     Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MinWidth="100" MinHeight="100" Grid.IsSharedSizeScope="True" Grid.Row="2" Grid.Column="0"/>
-        <Button x:Name="uxDrinkButton"  Content="Drinks"    Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MinWidth="100" MinHeight="100" Grid.IsSharedSizeScope="True" Grid.Row="2" Grid.Column="1"/>
-        <Label x:Name="uxAddLabel" Grid.ColumnSpan="2" Content="Add To Order" HorizontalAlignment="Center" Height="50" Margin="10,0" VerticalAlignment="Top"/>
+        <Grid.Resources>
+            <Style TargetType="Button">
+                <Setter Property="VerticalAlignment" Value="Stretch"></Setter>
+                <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+                <Setter Property="Margin" Value="10"></Setter>
+            </Style>
+        </Grid.Resources>
+        <Button x:Name="uxComboButton"  Content="Combos"    Grid.Row="1" Grid.Column="0" Click="NavToCombos"/>
+        <Button x:Name="uxEntreeButton" Content="Entrees"   Grid.Row="1" Grid.Column="1"/>
+        <Button x:Name="uxSideButton"   Content="Sides"     Grid.Row="2" Grid.Column="0"/>
+        <Button x:Name="uxDrinkButton"  Content="Drinks"    Grid.Row="2" Grid.Column="1"/>
+        <Label x:Name="uxAddLabel" Grid.ColumnSpan="2" Content="Add To Order" HorizontalAlignment="Center" Height="40" Margin="10" VerticalAlignment="Center"/>
 
     </Grid>
 </Page>
