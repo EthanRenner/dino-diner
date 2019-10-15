@@ -30,8 +30,8 @@ namespace DinoDiner.Menu
             get
             {
                 List<string> ingredients = new List<string>();
-                if (bun) ingredients.Add("Whole Wheat Bun");
                 for (int i = 0; i < 3; i++) ingredients.Add("Steakburger Pattie");
+                if (bun) ingredients.Add("Whole Wheat Bun");
                 if (pickle) ingredients.Add("Pickle");
                 if (ketchup) ingredients.Add("Ketchup");
                 if (mustard) ingredients.Add("Mustard");
@@ -114,6 +114,42 @@ namespace DinoDiner.Menu
         public void HoldLettuce()
         {
             this.lettuce = false;
+        }
+
+        /// <summary>
+        /// String description of this entree order.
+        /// </summary>
+        public override string Description
+        {
+            get { return this.ToString(); }
+        }
+
+        /// <summary>
+        /// String array of all specials added to this entree order.
+        /// </summary>
+        public override string[] Special
+        {
+            get
+            {
+                List<string> specials = new List<string>();
+                if (bun) specials.Add("+ Bun");
+                else specials.Add("- Bun");
+                if (pickle) specials.Add("+ Pickle");
+                else specials.Add("- Pickle");
+                if (ketchup) specials.Add("+ Ketchup");
+                else specials.Add("- Ketchup");
+                if (mustard) specials.Add("+ Mustard");
+                else specials.Add("- Mustard");
+                if (tomato) specials.Add("+ Tomato");
+                else specials.Add("- Tomato");
+                if (onion) specials.Add("+ Onion");
+                else specials.Add("- Onion");
+                if (mayo) specials.Add("+ Mayo");
+                else specials.Add("- Mayo");
+                if (lettuce) specials.Add("+ Lettuce");
+                else specials.Add("- Lettuce");
+                return specials.ToArray();
+            }
         }
 
         /// <summary>

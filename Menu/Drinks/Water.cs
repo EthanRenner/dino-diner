@@ -77,6 +77,30 @@ namespace DinoDiner.Menu
         }
 
         /// <summary>
+        /// String description of this drink order.
+        /// </summary>
+        public override string Description
+        {
+            get { return this.ToString(); }
+        }
+
+        /// <summary>
+        /// String array of all specials added to this drink order.
+        /// </summary>
+        public override string[] Special
+        {
+            get
+            {
+                List<string> specials = new List<string>();
+                if (Lemon) specials.Add("+ Lemon");
+                else specials.Add("- Lemon");
+                if (Ice) specials.Add("+ Ice");
+                else specials.Add("- Ice");
+                return specials.ToArray();
+            }
+        }
+
+        /// <summary>
         /// Overrides to string to give accurate description of order.
         /// </summary>
         /// <returns>A string representation of this drink.</returns>

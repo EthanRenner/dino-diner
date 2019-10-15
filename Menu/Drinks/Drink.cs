@@ -8,7 +8,7 @@ namespace DinoDiner.Menu
     /// <summary>
     /// The abstract base class representing a drink. 
     /// </summary>
-    public abstract class Drink: IMenuItem
+    public abstract class Drink: IMenuItem, IOrderItem
     {
         // Private variables for size and ice
         protected Size size = Size.Small;
@@ -50,5 +50,15 @@ namespace DinoDiner.Menu
         {
             ice = false;
         }
+
+        /// <summary>
+        /// String description of the drink.
+        /// </summary>
+        public abstract string Description { get; }
+
+        /// <summary>
+        /// String array of all specials added to drink.
+        /// </summary>
+        public abstract string[] Special { get; }
     }
 }

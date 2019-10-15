@@ -1,4 +1,6 @@
-﻿using System;
+﻿/* Menu.cs
+ * Author: Ethan Renner
+ */
 using System.Collections.Generic;
 using System.Text;
 

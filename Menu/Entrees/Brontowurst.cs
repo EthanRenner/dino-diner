@@ -66,6 +66,32 @@ namespace DinoDiner.Menu
         }
 
         /// <summary>
+        /// String description of this entree order.
+        /// </summary>
+        public override string Description
+        {
+            get { return this.ToString(); }
+        }
+
+        /// <summary>
+        /// String array of all specials added to this entree order.
+        /// </summary>
+        public override string[] Special
+        {
+            get
+            {
+                List<string> specials = new List<string>();
+                if (bun) specials.Add("+ Bun");
+                else specials.Add("- Bun");
+                if (peppers) specials.Add("Peppers");
+                else specials.Add("- Peppers");
+                if (onions) specials.Add("Onion");
+                else specials.Add("- Onion");
+                return specials.ToArray();
+            }
+        }
+
+        /// <summary>
         /// Overrides to string to give accurate description of order.
         /// </summary>
         /// <returns>A string representation of this entree.</returns>
