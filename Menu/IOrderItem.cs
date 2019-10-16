@@ -7,7 +7,7 @@ namespace DinoDiner.Menu
     /// <summary>
     /// Interface for an order item. Requires price, description, and specials list properties.
     /// </summary>
-    interface IOrderItem
+    public interface IOrderItem
     {
         /// <summary>
         /// Price of the order item.
