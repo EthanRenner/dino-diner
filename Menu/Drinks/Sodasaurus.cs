@@ -10,10 +10,24 @@ namespace DinoDiner.Menu
     /// </summary>
     public class Sodasaurus: Drink
     {
+        private SodasaurusFlavor flavor;
         /// <summary>
         /// Property for the flavor of a sodasaurus drink.
         /// </summary>
-        public SodasaurusFlavor Flavor { get; set; }
+        public SodasaurusFlavor Flavor
+        {
+            get
+            {
+                return flavor;
+            }
+            set
+            {
+                flavor = value;
+                NotifyOfPropertyChanged("Flavor");
+                NotifyOfPropertyChanged("Special");
+                NotifyOfPropertyChanged("Description");
+            }
+        }
 
         /// <summary>
         /// Constructor for a sodasuarus drink, size defaults to small.
@@ -47,6 +61,8 @@ namespace DinoDiner.Menu
                         Calories = 208;
                         break;
                 }
+                NotifyOfPropertyChanged("Size");
+                NotifyOfPropertyChanged("Description");
             }
         }
 
@@ -80,7 +96,7 @@ namespace DinoDiner.Menu
         {
             get
             {
-                List<string> specials = new List<string>();
+                List<string> specials = new List<string>(base.specials);
                 specials.Add(Flavor.ToString());
                 if (Ice) specials.Add("+ Ice");
                 else specials.Add("- Ice");

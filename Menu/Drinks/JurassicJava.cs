@@ -43,6 +43,8 @@ namespace DinoDiner.Menu
                         Calories = 8;
                         break;
                 }
+                NotifyOfPropertyChanged("Size");
+                NotifyOfPropertyChanged("Description");
             }
         }
 
@@ -67,7 +69,11 @@ namespace DinoDiner.Menu
         public bool RoomForCream
         {
             get { return roomForCream; }
-            set { roomForCream = value; }
+            set
+            {
+                roomForCream = value;
+                NotifyOfPropertyChanged("Description");
+            }
         }
 
         private bool decaf = false;
@@ -77,7 +83,11 @@ namespace DinoDiner.Menu
         public bool Decaf
         {
             get { return decaf; }
-            set { decaf = value; }
+            set
+            {
+                decaf = value;
+                NotifyOfPropertyChanged("Description");
+            }
         }
 
         /// <summary>
@@ -111,7 +121,7 @@ namespace DinoDiner.Menu
         {
             get
             {
-                List<string> specials = new List<string>();
+                List<string> specials = new List<string>(base.specials);
                 if (Decaf) specials.Add("+ Decaf");
                 else specials.Add("- Decaf");
                 if (RoomForCream) specials.Add("+ RoomForCream");

@@ -13,7 +13,7 @@ namespace DinoDiner.Menu
     public class DinoNuggets: Entree
     {
         //private variables
-        private uint NumberOfNuggets;
+        private uint numberOfNuggets;
         static uint CaloriesPerNugget = 59;
         static double PricePerExtraNugget = .25;
         
@@ -25,7 +25,7 @@ namespace DinoDiner.Menu
             get
             {
                 List<string> ingredients = new List<string>();
-                for (int i = 0; i < NumberOfNuggets; i++) ingredients.Add("Chicken Nugget");
+                for (int i = 0; i < numberOfNuggets; i++) ingredients.Add("Chicken Nugget");
                 return ingredients;
             }
         }
@@ -36,8 +36,8 @@ namespace DinoDiner.Menu
         public DinoNuggets()
         {
             this.Price = 4.25;
-            this.NumberOfNuggets = 6;
-            this.Calories = NumberOfNuggets * CaloriesPerNugget;
+            this.numberOfNuggets = 6;
+            this.Calories = numberOfNuggets * CaloriesPerNugget;
         }
 
         /// <summary>
@@ -45,9 +45,11 @@ namespace DinoDiner.Menu
         /// </summary>
         public void AddNugget()
         {
-            this.NumberOfNuggets++;
+            this.numberOfNuggets++;
             this.Price += PricePerExtraNugget;
             this.Calories += CaloriesPerNugget;
+            NotifyOfPropertyChanged("Special");
+            NotifyOfPropertyChanged("Ingredients");
         }
 
         /// <summary>
@@ -65,8 +67,8 @@ namespace DinoDiner.Menu
         {
             get
             {
-                List<string> specials = new List<string>();
-                specials.Add($"{NumberOfNuggets} Nuggets");
+                List<string> specials = new List<string>(base.specials);
+                specials.Add($"{numberOfNuggets} Nuggets");
                 return specials.ToArray();
             }
         }

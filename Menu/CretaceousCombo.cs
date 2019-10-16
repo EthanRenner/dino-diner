@@ -2,32 +2,60 @@
  * Author: Ethan Renner
  */
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
     /// <summary>
     /// A class representing a combo meal
     /// </summary>
-    public class CretaceousCombo: IMenuItem, IOrderItem
+    public class CretaceousCombo: IMenuItem, IOrderItem, INotifyPropertyChanged
     {
         // Backing Variables
         private Size size;
-
+        private Entree entree;
+        private Side side = new Fryceritops();
+        private Drink drink = new Sodasaurus();
 
         /// <summary>
         /// Gets and sets the entree
         /// </summary>
-        public Entree Entree { get; set; }
+        public Entree Entree
+        {
+            get { return entree; }
+            set
+            {
+                entree = value;
+                NotifyOfPropertyChanged("Entree");
+                NotifyOfPropertyChanged("Description");
+            }
+        }
 
         /// <summary>
         /// Gets and sets the side
         /// </summary>
-        public Side Side { get; set; } = new Fryceritops();
+        public Side Side
+        {
+            get { return side; }
+            set
+            {
+                side = value;
+                NotifyOfPropertyChanged("Side");
+            }
+        }
 
         /// <summary>
         /// Gets and sets the drink
         /// </summary>
-        public Drink Drink { get; set; } = new Sodasaurus();
+        public Drink Drink
+        {
+            get { return drink; }
+            set
+            {
+                drink = value;
+                NotifyOfPropertyChanged("Drink");
+            }
+        }
 
         /// <summary>
         /// Gets the price of the combo
@@ -62,6 +90,7 @@ namespace DinoDiner.Menu
                 size = value;
                 Drink.Size = value;
                 Side.Size = value;
+                NotifyOfPropertyChanged("Size");
             }
         }
 
@@ -99,16 +128,34 @@ namespace DinoDiner.Menu
         }
 
         /// <summary>
-        /// String array of all specials added to this entree order.
+        /// String array of all specials added to this combo order.
         /// </summary>
         public string[] Special
         {
             get
             {
-                List<string> specials = new List<string>();
+                List<string> tempSpecials = new List<string>(specials);
 
-                return specials.ToArray();
+                return tempSpecials.ToArray();
             }
+        }
+
+        protected List<string> specials = new List<string>();
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void NotifyOfPropertyChanged(string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        /// <summary>
+        /// Adds the special to the specials list.
+        /// </summary>
+        /// <param name="special">Special to add to list.</param>
+        public void AddSpecial(string special)
+        {
+            specials.Add(special);
+            NotifyOfPropertyChanged("Special");
         }
 
         /// <summary>

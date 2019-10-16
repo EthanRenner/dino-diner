@@ -42,6 +42,8 @@ namespace DinoDiner.Menu
                         Calories = 520;
                         break;
                 }
+                NotifyOfPropertyChanged("Size");
+                NotifyOfPropertyChanged("Description");
             }
         }
 
@@ -83,7 +85,7 @@ namespace DinoDiner.Menu
         {
             get
             {
-                List<string> specials = new List<string>();
+                List<string> specials = new List<string>(base.specials);
 
                 return specials.ToArray();
             }

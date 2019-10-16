@@ -49,6 +49,8 @@ namespace DinoDiner.Menu
         public void HoldDressing()
         {
             this.dressing = false;
+            NotifyOfPropertyChanged("Special");
+            NotifyOfPropertyChanged("Ingredients");
         }
 
         /// <summary>
@@ -57,6 +59,8 @@ namespace DinoDiner.Menu
         public void HoldCheese()
         {
             this.cheese = false;
+            NotifyOfPropertyChanged("Special");
+            NotifyOfPropertyChanged("Ingredients");
         }
 
         /// <summary>
@@ -65,6 +69,8 @@ namespace DinoDiner.Menu
         public void HoldLettuce()
         {
             this.lettuce = false;
+            NotifyOfPropertyChanged("Special");
+            NotifyOfPropertyChanged("Ingredients");
         }
 
         /// <summary>
@@ -82,7 +88,7 @@ namespace DinoDiner.Menu
         {
             get
             {
-                List<string> specials = new List<string>();
+                List<string> specials = new List<string>(base.specials);
                 if (dressing) specials.Add("+ Dressing");
                 else specials.Add("- Dressing");
                 if (cheese) specials.Add("+ Cheese");

@@ -42,6 +42,8 @@ namespace DinoDiner.Menu
                         Calories = 0;
                         break;
                 }
+                NotifyOfPropertyChanged("Size");
+                NotifyOfPropertyChanged("Description");
             }
         }
 
@@ -66,7 +68,13 @@ namespace DinoDiner.Menu
         public bool Lemon
         {
             get { return lemon; }
-            set { lemon = value; }
+            set
+            {
+                lemon = value;
+                NotifyOfPropertyChanged("Lemon");
+                NotifyOfPropertyChanged("Special");
+                NotifyOfPropertyChanged("Ingredients");
+            }
         }
         /// <summary>
         /// Adds a lemon to this drink order.
@@ -91,7 +99,7 @@ namespace DinoDiner.Menu
         {
             get
             {
-                List<string> specials = new List<string>();
+                List<string> specials = new List<string>(base.specials);
                 if (Lemon) specials.Add("+ Lemon");
                 else specials.Add("- Lemon");
                 if (Ice) specials.Add("+ Ice");
