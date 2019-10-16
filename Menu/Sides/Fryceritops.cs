@@ -95,7 +95,7 @@ namespace DinoDiner.Menu
         /// <returns>A string representation of this entree.</returns>
         public override string ToString()
         {
-            return $"{size} Friceritops";
+            return $"{size} Fryceritops";
         }
     }
 }

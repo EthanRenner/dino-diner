@@ -8,7 +8,7 @@ namespace DinoDiner.Menu
     /// <summary>
     /// A class representing a combo meal
     /// </summary>
-    public class CretaceousCombo: IMenuItem
+    public class CretaceousCombo: IMenuItem, IOrderItem
     {
         // Backing Variables
         private Size size;
@@ -88,6 +88,27 @@ namespace DinoDiner.Menu
         public CretaceousCombo(Entree entree)
         {
             this.Entree = entree;
+        }
+
+        /// <summary>
+        /// String description of this entree order.
+        /// </summary>
+        public string Description
+        {
+            get { return this.ToString(); }
+        }
+
+        /// <summary>
+        /// String array of all specials added to this entree order.
+        /// </summary>
+        public string[] Special
+        {
+            get
+            {
+                List<string> specials = new List<string>();
+
+                return specials.ToArray();
+            }
         }
 
         /// <summary>
