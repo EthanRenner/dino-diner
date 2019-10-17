@@ -35,14 +35,6 @@ namespace DinoDiner.Menu
         }
 
         /// <summary>
-        /// String description of this entree order.
-        /// </summary>
-        public override string Description
-        {
-            get { return this.ToString(); }
-        }
-
-        /// <summary>
         /// String array of all specials added to this entree order.
         /// </summary>
         public override string[] Special

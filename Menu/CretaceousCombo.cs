@@ -135,7 +135,11 @@ namespace DinoDiner.Menu
             get
             {
                 List<string> tempSpecials = new List<string>(specials);
-
+                tempSpecials.AddRange(Entree.Special);
+                tempSpecials.Add(Side.Description);
+                tempSpecials.AddRange(Side.Special);
+                tempSpecials.Add(Drink.Description);
+                tempSpecials.AddRange(Drink.Special);
                 return tempSpecials.ToArray();
             }
         }

@@ -53,14 +53,6 @@ namespace DinoDiner.Menu
         }
 
         /// <summary>
-        /// String description of this entree order.
-        /// </summary>
-        public override string Description
-        {
-            get { return this.ToString(); }
-        }
-
-        /// <summary>
         /// String array of all specials added to this entree order.
         /// </summary>
         public override string[] Special
@@ -68,7 +60,8 @@ namespace DinoDiner.Menu
             get
             {
                 List<string> specials = new List<string>(base.specials);
-                specials.Add($"{numberOfNuggets} Nuggets");
+                if (numberOfNuggets>6)
+                    specials.Add($"{numberOfNuggets - 6} Extra Nuggets");
                 return specials.ToArray();
             }
         }

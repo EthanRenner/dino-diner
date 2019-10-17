@@ -1,4 +1,7 @@
-﻿using System;
+﻿/* OrderFunctionsTest.cs
+ * Author: Ethan Renner
+ */
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Xunit;
@@ -236,9 +239,11 @@ namespace MenuTest
         public void DinoNuggetSpecialsTest()
         {
             DinoNuggets dn = new DinoNuggets();
-            Assert.Contains("6 Nuggets", dn.Special);
+            Assert.Empty(dn.Special);
             dn.AddNugget();
-            Assert.Contains("7 Nuggets", dn.Special);
+            Assert.Contains("1 Extra Nuggets", dn.Special);
+            dn.AddNugget();
+            Assert.Contains("2 Extra Nuggets", dn.Special);
         }
 
 
