@@ -102,5 +102,66 @@ namespace DinoDiner.MenuTest.Drinks
             Assert.Contains("Cane Sugar", temp);
             Assert.Contains("Lemon", temp);
         }
+
+        [Theory]
+        [InlineData(Size.Small, false)]
+        [InlineData(Size.Medium, false)]
+        [InlineData(Size.Large, false)]
+        [InlineData(Size.Small, true)]
+        [InlineData(Size.Medium, true)]
+        [InlineData(Size.Large, true)]
+        public void TyrannoTeaDescriptionTest(Size size, bool sweet)
+        {
+            Tyrannotea tea = new Tyrannotea();
+            tea.Size = size;
+            tea.Sweet = sweet;
+            if (sweet) Assert.Equal($"{size} Sweet Tyrannotea", tea.Description);
+            else Assert.Equal($"{size} Tyrannotea", tea.Description);
+        }
+
+        [Fact]
+        public void TyrannoTeaSpecialsTest()
+        {
+            Tyrannotea tea = new Tyrannotea();
+            Assert.Empty(tea.Special);
+
+            tea.AddLemon();
+            Assert.Contains("Add Lemon", tea.Special);
+
+            tea.HoldIce();
+            Assert.Contains("Hold Ice", tea.Special);
+        }
+
+        [Fact]
+        public void TyrannoteaNotifyPropertyChanged()
+        {
+            Tyrannotea t = new Tyrannotea();
+            string[] sizeProperties = { "Size", "Price", "Calories", "Description" };
+            foreach (string property in sizeProperties)
+                Assert.PropertyChanged(t, property, () =>
+                {
+                    t.Size = Size.Large;
+                });
+
+            string[] sweetProperties = { "Sweet", "Description", "Ingredients" };
+            foreach (string property in sweetProperties)
+                Assert.PropertyChanged(t, property, () =>
+                {
+                    t.Sweet = true;
+                });
+            string[] lemonProperties = { "Lemon", "Special", "Ingredients" };
+            foreach (string property in lemonProperties)
+                Assert.PropertyChanged(t, property, () =>
+                {
+                    t.AddLemon();
+                });
+
+            string[] iceProperties = { "Ice", "Special" };
+            foreach (string property in iceProperties)
+                Assert.PropertyChanged(t, property, () =>
+                {
+                    t.HoldIce();
+                });
+        }
     }
 }

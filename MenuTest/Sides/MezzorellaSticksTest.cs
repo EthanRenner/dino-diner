@@ -83,5 +83,45 @@ namespace MenuTest.Sides
             ms.Size = Size.Large;
             Assert.Equal<Size>(Size.Large, ms.Size);
         }
+
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+        public void MezzorellaSticksDescriptionTest(Size size)
+        {
+            MezzorellaSticks ms = new MezzorellaSticks();
+            ms.Size = size;
+            Assert.Equal($"{size} Mezzorella Sticks", ms.Description);
+        }
+
+        [Fact]
+        public void MezzorellaSticksSpecialsTest()
+        {
+            MezzorellaSticks ms = new MezzorellaSticks();
+            Assert.Empty(ms.Special);
+        }
+
+        [Fact]
+        public void MezzorellaSticksNotifyPropertyChangedTest()
+        {
+            MezzorellaSticks ms = new MezzorellaSticks();
+
+            Assert.PropertyChanged(ms, "Price", () =>
+            {
+                ms.Price = 10;
+            });
+            Assert.PropertyChanged(ms, "Calories", () =>
+            {
+                ms.Calories = 10;
+            });
+
+            string[] sizeProperties = { "Size", "Price", "Calories", "Description" };
+            foreach (string property in sizeProperties)
+                Assert.PropertyChanged(ms, property, () =>
+                {
+                    ms.Size = Size.Large;
+                });
+        }
     }
 }

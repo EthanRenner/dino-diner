@@ -107,6 +107,75 @@ namespace DinoDiner.MenuTest.Entrees
             Assert.DoesNotContain<string>("Mayo", trex.Ingredients);
         }
 
-    }
+        [Fact]
+        public void TRexKingBurgerDescriptionTest()
+        {
+            TRexKingBurger trex = new TRexKingBurger();
+            Assert.Equal("T-Rex King Burger", trex.Description);
+        }
 
+        [Fact]
+        public void TRexKingBurgerSpecialsTest()
+        {
+            TRexKingBurger trex = new TRexKingBurger();
+            Assert.Empty(trex.Special);
+
+            trex.HoldBun();
+            Assert.Contains("Hold Bun", trex.Special);
+
+            trex.HoldPickle();
+            Assert.Contains("Hold Pickle", trex.Special);
+
+            trex.HoldKetchup();
+            Assert.Contains("Hold Ketchup", trex.Special);
+
+            trex.HoldMustard();
+            Assert.Contains("Hold Mustard", trex.Special);
+
+            trex.HoldTomato();
+            Assert.Contains("Hold Tomato", trex.Special);
+
+            trex.HoldOnion();
+            Assert.Contains("Hold Onion", trex.Special);
+
+            trex.HoldMayo();
+            Assert.Contains("Hold Mayo", trex.Special);
+
+            trex.HoldLettuce();
+            Assert.Contains("Hold Lettuce", trex.Special);
+        }
+
+        [Fact]
+        public void TRexKingBugerNotifyPropertyChanged()
+        {
+            TRexKingBurger trex = new TRexKingBurger();
+
+            Assert.PropertyChanged(trex, "Price", () =>
+            {
+                trex.Price = 10;
+            });
+            Assert.PropertyChanged(trex, "Calories", () =>
+            {
+                trex.Calories = 10;
+            });
+
+            System.Action[] actions = {
+                () => { trex.HoldBun(); },
+                () => { trex.HoldPickle(); },
+                () => { trex.HoldKetchup(); },
+                () => { trex.HoldMustard(); },
+                () => { trex.HoldLettuce(); },
+                () => { trex.HoldTomato(); },
+                () => { trex.HoldOnion(); },
+                () => { trex.HoldMayo(); }
+            };
+            string[] properties = { "Special", "Ingredients" };
+
+            foreach (System.Action action in actions)
+            {
+                foreach (string property in properties)
+                    Assert.PropertyChanged(trex, property, action);
+            }
+        }
+    }
 }

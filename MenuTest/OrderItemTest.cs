@@ -48,13 +48,13 @@ namespace MenuTest
             Assert.Equal<double>(0, order.SalesTaxCost);
             Assert.Equal<double>(0, order.TotalCost);
         }
-    }
-    class OrderItem : IOrderItem
-    {
-        public double Price { get; set; }
+        internal class OrderItem : IOrderItem
+        {
+            public double Price { get; set; }
 
-        public string Description { get; set; }
+            public string Description { get; set; }
 
-        public string[] Special { get; set; }
+            public string[] Special { get; set; }
+        }
     }
 }

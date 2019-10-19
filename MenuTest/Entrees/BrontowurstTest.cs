@@ -55,6 +55,56 @@ namespace DinoDiner.MenuTest.Entrees
             bw.HoldOnion();
             Assert.DoesNotContain<string>("Onion", bw.Ingredients);
         }
-    }
 
+        [Fact]
+        public void BrontowurstDescriptionTest()
+        {
+            Brontowurst bw = new Brontowurst();
+            Assert.Equal("Brontowurst", bw.Description);
+        }
+
+        [Fact]
+        public void BrontowurstSpecialsTest()
+        {
+            Brontowurst bw = new Brontowurst();
+            Assert.Empty(bw.Special);
+
+            bw.HoldBun();
+            Assert.Contains("Hold Bun", bw.Special);
+
+            bw.HoldPeppers();
+            Assert.Contains("Hold Peppers", bw.Special);
+
+            bw.HoldOnion();
+            Assert.Contains("Hold Onion", bw.Special);
+        }
+
+        [Fact]
+        public void BrontowurstNotifyPropertyChanged()
+        {
+            Brontowurst brontowurst = new Brontowurst();
+
+            Assert.PropertyChanged(brontowurst, "Price", () =>
+            {
+                brontowurst.Price = 10;
+            });
+            Assert.PropertyChanged(brontowurst, "Calories", () =>
+            {
+                brontowurst.Calories = 10;
+            });
+
+            System.Action[] actions = {
+                () => { brontowurst.HoldBun(); },
+                () => { brontowurst.HoldPeppers(); },
+                () => { brontowurst.HoldOnion(); },
+            };
+            string[] properties = { "Special", "Ingredients" };
+
+            foreach (System.Action action in actions)
+            {
+                foreach (string property in properties)
+                    Assert.PropertyChanged(brontowurst, property, action);
+            }
+        }
+    }
 }

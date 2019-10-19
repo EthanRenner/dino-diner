@@ -64,6 +64,59 @@ namespace DinoDiner.MenuTest.Entrees
             sb.HoldMustard();
             Assert.DoesNotContain<string>("Mustard", sb.Ingredients);
         }
-    }
 
+        [Fact]
+        public void SteakosaurusBurgerDescriptionTest()
+        {
+            SteakosaurusBurger sb = new SteakosaurusBurger();
+            Assert.Equal("Steakosaurus Burger", sb.Description);
+        }
+        [Fact]
+        public void SteakosaurusBurgerSpecialsTest()
+        {
+            SteakosaurusBurger sb = new SteakosaurusBurger();
+            Assert.Empty(sb.Special);
+
+            sb.HoldBun();
+            Assert.Contains("Hold Bun", sb.Special);
+
+            sb.HoldPickle();
+            Assert.Contains("Hold Pickle", sb.Special);
+
+            sb.HoldKetchup();
+            Assert.Contains("Hold Ketchup", sb.Special);
+
+            sb.HoldMustard();
+            Assert.Contains("Hold Mustard", sb.Special);
+        }
+
+        [Fact]
+        public void SteakosaurusBugerNotifyPropertyChanged()
+        {
+            SteakosaurusBurger sb = new SteakosaurusBurger();
+
+            Assert.PropertyChanged(sb, "Price", () =>
+            {
+                sb.Price = 10;
+            });
+            Assert.PropertyChanged(sb, "Calories", () =>
+            {
+                sb.Calories = 10;
+            });
+
+            System.Action[] actions = {
+                () => { sb.HoldBun(); },
+                () => { sb.HoldPickle(); },
+                () => { sb.HoldKetchup(); },
+                () => { sb.HoldMustard(); },
+            };
+            string[] properties = { "Special", "Ingredients" };
+
+            foreach (System.Action action in actions)
+            {
+                foreach (string property in properties)
+                    Assert.PropertyChanged(sb, property, action);
+            }
+        }
+    }
 }

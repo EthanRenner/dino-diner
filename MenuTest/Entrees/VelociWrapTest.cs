@@ -2,7 +2,7 @@
 using Xunit;
 using DinoDiner.Menu;
 
-namespace Menu.Entrees
+namespace DinoDiner.MenuTest.Entrees
 {
     public class VelociWrapUnitTest
     {
@@ -55,6 +55,57 @@ namespace Menu.Entrees
             VelociWrap vw = new VelociWrap();
             vw.HoldCheese();
             Assert.DoesNotContain<string>("Parmesan Cheese", vw.Ingredients);
+        }
+
+        [Fact]
+        public void VelociWrapDescriptionTest()
+        {
+            VelociWrap vw = new VelociWrap();
+            Assert.Equal("Veloci-Wrap", vw.Description);
+        }
+
+        [Fact]
+        public void VelociWrapSpecialsTest()
+        {
+            VelociWrap vw = new VelociWrap();
+            Assert.Empty(vw.Special);
+
+            vw.HoldDressing();
+            Assert.Contains("Hold Dressing", vw.Special);
+
+            vw.HoldCheese();
+            Assert.Contains("Hold Cheese", vw.Special);
+
+            vw.HoldLettuce();
+            Assert.Contains("Hold Lettuce", vw.Special);
+        }
+
+        [Fact]
+        public void VelociWrapNotifyPropertyChanged()
+        {
+            VelociWrap vw = new VelociWrap();
+
+            Assert.PropertyChanged(vw, "Price", () =>
+            {
+                vw.Price = 10;
+            });
+            Assert.PropertyChanged(vw, "Calories", () =>
+            {
+                vw.Calories = 10;
+            });
+
+            System.Action[] actions = {
+                () => { vw.HoldLettuce(); },
+                () => { vw.HoldDressing(); },
+                () => { vw.HoldCheese(); }
+            };
+            string[] properties = { "Special", "Ingredients" };
+
+            foreach (System.Action action in actions)
+            {
+                foreach (string property in properties)
+                    Assert.PropertyChanged(vw, property, action);
+            }
         }
     }
 }

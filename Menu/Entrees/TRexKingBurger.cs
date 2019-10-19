@@ -140,22 +140,14 @@ namespace DinoDiner.Menu
             get
             {
                 List<string> specials = new List<string>(base.specials);
-                if (bun) specials.Add("+ Bun");
-                else specials.Add("- Bun");
-                if (pickle) specials.Add("+ Pickle");
-                else specials.Add("- Pickle");
-                if (ketchup) specials.Add("+ Ketchup");
-                else specials.Add("- Ketchup");
-                if (mustard) specials.Add("+ Mustard");
-                else specials.Add("- Mustard");
-                if (tomato) specials.Add("+ Tomato");
-                else specials.Add("- Tomato");
-                if (onion) specials.Add("+ Onion");
-                else specials.Add("- Onion");
-                if (mayo) specials.Add("+ Mayo");
-                else specials.Add("- Mayo");
-                if (lettuce) specials.Add("+ Lettuce");
-                else specials.Add("- Lettuce");
+                if (!bun) specials.Add("Hold Bun");
+                if (!pickle) specials.Add("Hold Pickle");
+                if (!ketchup) specials.Add("Hold Ketchup");
+                if (!mustard) specials.Add("Hold Mustard");
+                if (!tomato) specials.Add("Hold Tomato");
+                if (!onion) specials.Add("Hold Onion");
+                if (!mayo) specials.Add("Hold Mayo");
+                if (!lettuce) specials.Add("Hold Lettuce");
                 return specials.ToArray();
             }
         }

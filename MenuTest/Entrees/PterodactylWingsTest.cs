@@ -30,5 +30,32 @@ namespace DinoDiner.MenuTest.Entrees
             Assert.Equal<int>(2, ingredients.Count);
         }
 
+        [Fact]
+        public void PterodactylWingsDescriptionTest()
+        {
+            PterodactylWings pw = new PterodactylWings();
+            Assert.Equal("Pterodactyl Wings", pw.Description);
+        }
+
+        [Fact]
+        public void PterodactylWingsSpecialsTest()
+        {
+            PterodactylWings pw = new PterodactylWings();
+            Assert.Empty(pw.Special);
+        }
+
+        [Fact]
+        public void PterodactylWingsNotifyPropertyChanged()
+        {
+            PterodactylWings pw = new PterodactylWings();
+            Assert.PropertyChanged(pw, "Price", () =>
+            {
+                pw.Price = 10;
+            });
+            Assert.PropertyChanged(pw, "Calories", () =>
+            {
+                pw.Calories = 10;
+            });
+        }
     }
 }

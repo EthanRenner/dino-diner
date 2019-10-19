@@ -58,5 +58,55 @@ namespace DinoDiner.MenuTest.Drinks
             s.Lemon = true;
             Assert.Contains("Lemon", s.Ingredients);
         }
+
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+        public void WaterDescriptionTest(Size size)
+        {
+            Water water = new Water();
+            water.Size = size;
+            Assert.Equal($"{size} Water", water.Description);
+        }
+
+        [Fact]
+        public void WaterSpecialsTest()
+        {
+            Water water = new Water();
+            Assert.Empty(water.Special);
+
+            water.AddLemon();
+            Assert.Contains("Add Lemon", water.Special);
+
+            water.HoldIce();
+            Assert.Contains("Hold Ice", water.Special);
+        }
+
+        [Fact]
+        public void WaterNotifyPropertyChanged()
+        {
+            Water w = new Water();
+            string[] sizeProperties = { "Size", "Price", "Calories", "Description" };
+            foreach (string property in sizeProperties)
+                Assert.PropertyChanged(w, property, () =>
+                {
+                    w.Size = Size.Large;
+                });
+
+            string[] lemonProperties = { "Lemon", "Special", "Ingredients" };
+            foreach (string property in lemonProperties)
+                Assert.PropertyChanged(w, property, () =>
+                {
+                    w.AddLemon();
+                });
+
+            string[] iceProperties = { "Ice", "Special" };
+            foreach (string property in iceProperties)
+                Assert.PropertyChanged(w, property, () =>
+                {
+                    w.HoldIce();
+                });
+        }
     }
 }

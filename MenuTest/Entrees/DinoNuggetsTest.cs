@@ -67,11 +67,11 @@ namespace DinoDiner.MenuTest.Entrees
         {
             DinoNuggets dn = new DinoNuggets();
             dn.AddNugget();
-            Assert.Equal(dn.Price, 4.50, 2);
+            Assert.Equal(4.50, dn.Price, 2);
             dn.AddNugget();
-            Assert.Equal(dn.Price, 4.75, 2);
+            Assert.Equal(4.75, dn.Price, 2);
             dn.AddNugget();
-            Assert.Equal(dn.Price, 5.0, 2);
+            Assert.Equal(5.0, dn.Price, 2);
         }
 
         [Fact]
@@ -84,6 +84,48 @@ namespace DinoDiner.MenuTest.Entrees
             Assert.Equal<uint>(dn.Calories, 59*8);
             dn.AddNugget();
             Assert.Equal<uint>(dn.Calories, 59*9);
+        }
+        [Fact]
+        public void DinoNuggetDescriptionTest()
+        {
+
+            DinoNuggets dn = new DinoNuggets();
+            Assert.Equal("Dino-Nuggets", dn.Description);
+        }
+
+        [Fact]
+        public void DinoNuggetSpecialsTest()
+        {
+            DinoNuggets dn = new DinoNuggets();
+            Assert.Empty(dn.Special);
+
+            for (int i = 1; i < 10; i++)
+            {
+                dn.AddNugget();
+                Assert.Contains($"{i} Extra Nuggets", dn.Special);
+            }
+        }
+
+        [Fact]
+        public void DinoNuggetsNotifyPropertyChanged()
+        {
+            DinoNuggets dn = new DinoNuggets();
+
+            Assert.PropertyChanged(dn, "Price", () =>
+            {
+                dn.Price = 10;
+            });
+            Assert.PropertyChanged(dn, "Calories", () =>
+            {
+                dn.Calories = 10;
+            });
+
+            string[] properties = { "Special", "Price", "Calories", "Ingredients" };
+                foreach (string property in properties)
+                    Assert.PropertyChanged(dn, property, () =>
+                    {
+                        dn.AddNugget();
+                    });
         }
     }
 }

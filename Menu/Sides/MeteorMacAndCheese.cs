@@ -69,15 +69,7 @@ namespace DinoDiner.Menu
                 return ingredients;
             }
         }
-
-        /// <summary>
-        /// String description of this side order.
-        /// </summary>
-        public override string Description
-        {
-            get { return this.ToString(); }
-        }
-
+        
         /// <summary>
         /// String array of all specials added to this side order.
         /// </summary>

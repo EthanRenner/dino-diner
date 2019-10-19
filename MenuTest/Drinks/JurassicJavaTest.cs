@@ -56,5 +56,67 @@ namespace DinoDiner.MenuTest.Drinks
             Assert.Contains("Water", s.Ingredients);
             Assert.Contains("Coffee", s.Ingredients);
         }
+
+        [Theory]
+        [InlineData(Size.Small, false)]
+        [InlineData(Size.Medium, false)]
+        [InlineData(Size.Large, false)]
+        [InlineData(Size.Small, true)]
+        [InlineData(Size.Medium, true)]
+        [InlineData(Size.Large, true)]
+        public void JurrasicJavaDescriptionTest(Size size, bool decaf)
+        {
+            JurassicJava java = new JurassicJava();
+            java.Size = size;
+            java.Decaf = decaf;
+            if (decaf) Assert.Equal($"{size} Decaf Jurassic Java", java.Description);
+            else Assert.Equal($"{size} Jurassic Java", java.Description);
+        }
+
+        [Fact]
+        public void JurrasicJavaSpecialsTest()
+        {
+            JurassicJava java = new JurassicJava();
+            Assert.Empty(java.Special);
+
+            java.LeaveRoomForCream();
+            Assert.Contains("Leave Room For Cream", java.Special);
+
+            java.AddIce();
+            Assert.Contains("Add Ice", java.Special);
+        }
+
+        [Fact]
+        public void JurassicJavaNotifyPropertyChanged()
+        {
+            JurassicJava jj = new JurassicJava();
+            string[] sizeProperties = { "Size", "Price", "Calories", "Description" };
+            foreach (string property in sizeProperties)
+                Assert.PropertyChanged(jj, property, () =>
+                {
+                    jj.Size = Size.Large;
+                });
+
+            string[] roomForCreamProperties = { "RoomForCream", "Description" };
+            foreach (string property in roomForCreamProperties)
+                Assert.PropertyChanged(jj, property, () =>
+                {
+                    jj.RoomForCream = true;
+                });
+
+            string[] decafProperties = { "Decaf", "Description" };
+            foreach (string property in decafProperties)
+                Assert.PropertyChanged(jj, property, () =>
+                {
+                    jj.Decaf = true;
+                });
+
+            string[] iceProperties = { "Ice", "Special" };
+            foreach (string property in iceProperties)
+                Assert.PropertyChanged(jj, property, () =>
+                {
+                    jj.AddIce();
+                });
+        }
     }
 }

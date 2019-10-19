@@ -73,6 +73,7 @@ namespace DinoDiner.Menu
             {
                 roomForCream = value;
                 NotifyOfPropertyChanged("Description");
+                NotifyOfPropertyChanged("RoomForCream");
             }
         }
 
@@ -87,6 +88,7 @@ namespace DinoDiner.Menu
             {
                 decaf = value;
                 NotifyOfPropertyChanged("Description");
+                NotifyOfPropertyChanged("Decaf");
             }
         }
 
@@ -107,14 +109,6 @@ namespace DinoDiner.Menu
         }
 
         /// <summary>
-        /// String description of this drink order.
-        /// </summary>
-        public override string Description
-        {
-            get { return this.ToString(); }
-        }
-
-        /// <summary>
         /// String array of all specials added to this drink order.
         /// </summary>
         public override string[] Special
@@ -122,12 +116,8 @@ namespace DinoDiner.Menu
             get
             {
                 List<string> specials = new List<string>(base.specials);
-                if (Decaf) specials.Add("+ Decaf");
-                else specials.Add("- Decaf");
-                if (RoomForCream) specials.Add("+ RoomForCream");
-                else specials.Add("- RoomForCream");
-                if (Ice) specials.Add("+ Ice");
-                else specials.Add("- Ice");
+                if (Ice) specials.Add("Add Ice");
+                if (RoomForCream) specials.Add("Leave Room For Cream");
                 return specials.ToArray();
             }
         }

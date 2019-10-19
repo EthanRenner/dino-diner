@@ -77,7 +77,6 @@ namespace DinoDiner.Menu
                 Size = size;
                 NotifyOfPropertyChanged("Sweet");
                 NotifyOfPropertyChanged("Description");
-                NotifyOfPropertyChanged("Special");
                 NotifyOfPropertyChanged("Ingredients");
             }
         }
@@ -105,14 +104,6 @@ namespace DinoDiner.Menu
         }
 
         /// <summary>
-        /// String description of this drink order.
-        /// </summary>
-        public override string Description
-        {
-            get { return this.ToString(); }
-        }
-
-        /// <summary>
         /// String array of all specials added to this drink order.
         /// </summary>
         public override string[] Special
@@ -120,12 +111,8 @@ namespace DinoDiner.Menu
             get
             {
                 List<string> specials = new List<string>(base.specials);
-                if (Sweet) specials.Add("+ Sugar");
-                else specials.Add("- Sugar");
-                if (Lemon) specials.Add("+ Lemon");
-                else specials.Add("- Lemon");
-                if (Ice) specials.Add("+ Ice");
-                else specials.Add("- Ice");
+                if (Lemon) specials.Add("Add Lemon");
+                if (!Ice) specials.Add("Hold Ice");
                 return specials.ToArray();
             }
         }

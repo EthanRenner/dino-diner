@@ -84,7 +84,10 @@ namespace DinoDiner.Menu
         /// <summary>
         /// String description of the drink.
         /// </summary>
-        public abstract string Description { get; }
+        public string Description
+        {
+            get { return this.ToString(); }
+        }
 
         /// <summary>
         /// String array of all specials added to drink.

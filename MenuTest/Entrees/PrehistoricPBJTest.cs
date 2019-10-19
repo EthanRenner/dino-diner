@@ -46,6 +46,52 @@ namespace DinoDiner.MenuTest.Entrees
             pbj.HoldJelly();
             Assert.DoesNotContain<string>("Jelly", pbj.Ingredients);
         }
-    }
 
+        [Fact]
+        public void PrehistoricPBJDescriptionTest()
+        {
+            PrehistoricPBJ pbj = new PrehistoricPBJ();
+            Assert.Equal("Prehistoric PB&J", pbj.Description);
+        }
+
+        [Fact]
+        public void PrehistoricPBJSpecialsTest()
+        {
+            PrehistoricPBJ pbj = new PrehistoricPBJ();
+            Assert.Empty(pbj.Special);
+
+            pbj.HoldPeanutButter();
+            Assert.Contains("Hold Peanut Butter", pbj.Special);
+
+            pbj.HoldJelly();
+            Assert.Contains("Hold Jelly", pbj.Special);
+        }
+
+        [Fact]
+        public void PrehistoricPBJNotifyPropertyChanged()
+        {
+            PrehistoricPBJ pbj = new PrehistoricPBJ();
+
+            Assert.PropertyChanged(pbj, "Price", () =>
+            {
+                pbj.Price = 10;
+            });
+            Assert.PropertyChanged(pbj, "Calories", () =>
+            {
+                pbj.Calories = 10;
+            });
+
+            System.Action[] actions = {
+                () => { pbj.HoldPeanutButter(); },
+                () => { pbj.HoldJelly(); },
+            };
+            string[] properties = { "Special", "Ingredients" };
+
+            foreach (System.Action action in actions)
+            {
+                foreach (string property in properties)
+                    Assert.PropertyChanged(pbj, property, action);
+            }
+        }
+    }
 }

@@ -59,5 +59,71 @@ namespace DinoDiner.MenuTest.Drinks
             Assert.Contains("Natural Flavors", s.Ingredients);
             Assert.Contains("Cane Sugar", s.Ingredients);
         }
+
+        [Theory]
+        [InlineData(Size.Small, SodasaurusFlavor.Cherry)]
+        [InlineData(Size.Small, SodasaurusFlavor.Chocolate)]
+        [InlineData(Size.Small, SodasaurusFlavor.Cola)]
+        [InlineData(Size.Small, SodasaurusFlavor.Lime)]
+        [InlineData(Size.Small, SodasaurusFlavor.Orange)]
+        [InlineData(Size.Small, SodasaurusFlavor.RootBeer)]
+        [InlineData(Size.Small, SodasaurusFlavor.Vanilla)]
+        [InlineData(Size.Medium, SodasaurusFlavor.Cherry)]
+        [InlineData(Size.Medium, SodasaurusFlavor.Chocolate)]
+        [InlineData(Size.Medium, SodasaurusFlavor.Cola)]
+        [InlineData(Size.Medium, SodasaurusFlavor.Lime)]
+        [InlineData(Size.Medium, SodasaurusFlavor.Orange)]
+        [InlineData(Size.Medium, SodasaurusFlavor.RootBeer)]
+        [InlineData(Size.Medium, SodasaurusFlavor.Vanilla)]
+        [InlineData(Size.Large, SodasaurusFlavor.Cherry)]
+        [InlineData(Size.Large, SodasaurusFlavor.Chocolate)]
+        [InlineData(Size.Large, SodasaurusFlavor.Cola)]
+        [InlineData(Size.Large, SodasaurusFlavor.Lime)]
+        [InlineData(Size.Large, SodasaurusFlavor.Orange)]
+        [InlineData(Size.Large, SodasaurusFlavor.RootBeer)]
+        [InlineData(Size.Large, SodasaurusFlavor.Vanilla)]
+        public void SodasaurusDescriptionTest(Size size, SodasaurusFlavor flavor)
+        {
+            Sodasaurus soda = new Sodasaurus();
+            soda.Size = size;
+            soda.Flavor = flavor;
+            Assert.Equal($"{size} {flavor} Sodasaurus", soda.Description);
+        }
+
+        [Fact]
+        public void SodaSaurusSpecialsTest()
+        {
+            Sodasaurus soda = new Sodasaurus();
+            Assert.Empty(soda.Special);
+
+            soda.HoldIce();
+            Assert.Contains("Hold Ice", soda.Special);
+        }
+        [Fact]
+        public void SodasaurusNotifyPropertyChanged()
+        {
+            Sodasaurus s = new Sodasaurus();
+
+            string[] sizeProperties = { "Size", "Price", "Calories", "Description" };
+            foreach (string property in sizeProperties)
+                Assert.PropertyChanged(s, property, () =>
+                {
+                    s.Size = Size.Large;
+                });
+
+            string[] flavorProperties = { "Flavor", "Description" };
+            foreach (string property in flavorProperties)
+                Assert.PropertyChanged(s, property, () =>
+                {
+                    s.Flavor = SodasaurusFlavor.Chocolate;
+                });
+
+            string[] iceProperties = { "Ice", "Special" };
+            foreach (string property in iceProperties)
+                Assert.PropertyChanged(s, property, () =>
+                {
+                    s.HoldIce();
+                });
+        }
     }
 }
