@@ -14,7 +14,7 @@ namespace DinoDiner.Menu
         {
             get;
             set;
-        }
+        } = new ObservableCollection<IOrderItem>();
 
         /// <summary>
         /// The total price from the prices of all order items.

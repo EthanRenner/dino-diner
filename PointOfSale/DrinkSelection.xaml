@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="DrinkSelection">
 
-
+    <ScrollViewer>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -30,6 +30,7 @@
                 <Setter Property="FontSize" Value="16"/>
             </Style>
         </Grid.Resources>
+        
         <TextBlock Grid.Row="0" FontSize="20" Grid.ColumnSpan="3">Add To Order</TextBlock>
         
         <Grid Grid.Column="0" Grid.Row="1">
@@ -108,7 +109,7 @@
             <TextBlock Grid.Row="0" FontSize="20">Size</TextBlock>
             <StackPanel Grid.Row="1">
                 <Border>
-                    <RadioButton>
+                    <RadioButton IsChecked="True">
                         <TextBlock Text="Small"></TextBlock>
                     </RadioButton>
                 </Border>
@@ -142,4 +143,5 @@
             </StackPanel>
         </Grid>
     </Grid>
+    </ScrollViewer>
 </Page>

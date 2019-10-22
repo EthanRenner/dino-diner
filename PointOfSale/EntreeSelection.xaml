@@ -5,78 +5,82 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PointOfSale"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="600"
       Title="EntreeSelection">
-
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Grid.Resources>
-            <Style TargetType="Button">
-                <Setter Property="Width" Value="175"/>
-                <Setter Property="Height" Value="80"/>
-                <Setter Property="Margin" Value="10"/>
-            </Style>
-            <Style TargetType="Image">
-                <Setter Property="Height" Value = "50"/>
-                <Setter Property="Margin" Value = "5"/>
-            </Style>
-            <Style TargetType="TextBlock">
-                <Setter Property="VerticalAlignment" Value="Center"/>
-                <Setter Property="TextAlignment" Value="Center"/>
-                <Setter Property="Margin" Value="5"/>
-                <Setter Property="FontSize" Value="16"/>
-            </Style>
-        </Grid.Resources>
-        <TextBlock Grid.Row="0" FontSize="20">Add To Order</TextBlock>
-        <WrapPanel Grid.Row="1">
-            <Button>
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="Assets/DinoDiner-01.png" />
-                    <TextBlock Text="Brontowurst"></TextBlock>
-                </StackPanel>
-            </Button>
-            <Button >
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="Assets/DinoDiner-02.png"/>
-                    <TextBlock Text="Dino-Nuggets"></TextBlock>
-                </StackPanel>
-            </Button>
-            <Button>
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="Assets/DinoDiner-03.png"/>
-                    <TextBlock Text="Prehistoric&#10;PB&amp;J Combo"></TextBlock>
-                </StackPanel>
-            </Button>
-            <Button>
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="Assets/DinoDiner-04.png"/>
-                    <TextBlock Text="Pterodactyl&#10;Wings"></TextBlock>
-                </StackPanel>
-            </Button>
-            <Button>
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="Assets/DinoDiner-05.png"/>
-                    <TextBlock Text="Steakosaurus&#10;Burger"></TextBlock>
-                </StackPanel>
-            </Button>
-            <Button>
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="Assets/DinoDiner-06.png"/>
-                    <TextBlock Text="T-Rex&#10;KingBurger"></TextBlock>
-                </StackPanel>
-            </Button>
-            <Button>
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="Assets/DinoDiner-07.png"/>
-                    <TextBlock Text="Veloci-Wrap"></TextBlock>
-                </StackPanel>
-            </Button>
-        </WrapPanel>
-    </Grid>
+    <ScrollViewer>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Width" Value="175"/>
+                    <Setter Property="Height" Value="80"/>
+                    <Setter Property="Margin" Value="10"/>
+                </Style>
+                <Style TargetType="Image">
+                    <Setter Property="Height" Value = "50"/>
+                    <Setter Property="Margin" Value = "5"/>
+                </Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="TextAlignment" Value="Center"/>
+                    <Setter Property="Margin" Value="5"/>
+                    <Setter Property="FontSize" Value="16"/>
+                </Style>
+                <Style TargetType="StackPanel">
+                    <Setter Property="Orientation" Value="Horizontal"/>
+                </Style>
+            </Grid.Resources>
+            <TextBlock Grid.Row="0" FontSize="20">Add To Order</TextBlock>
+            <WrapPanel Grid.Row="1">
+                <Button>
+                    <StackPanel>
+                        <Image Source="Assets/DinoDiner-01.png" />
+                        <TextBlock Text="Brontowurst"></TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button>
+                    <StackPanel>
+                        <Image Source="Assets/DinoDiner-02.png"/>
+                        <TextBlock Text="Dino-Nuggets"></TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button>
+                    <StackPanel>
+                        <Image Source="Assets/DinoDiner-03.png"/>
+                        <TextBlock Text="Prehistoric&#10;PB&amp;J Combo"></TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button>
+                    <StackPanel>
+                        <Image Source="Assets/DinoDiner-04.png"/>
+                        <TextBlock Text="Pterodactyl&#10;Wings"></TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button>
+                    <StackPanel>
+                        <Image Source="Assets/DinoDiner-05.png"/>
+                        <TextBlock Text="Steakosaurus&#10;Burger"></TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button>
+                    <StackPanel>
+                        <Image Source="Assets/DinoDiner-06.png"/>
+                        <TextBlock Text="T-Rex&#10;KingBurger"></TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button>
+                    <StackPanel>
+                        <Image Source="Assets/DinoDiner-07.png"/>
+                        <TextBlock Text="Veloci-Wrap"></TextBlock>
+                    </StackPanel>
+                </Button>
+            </WrapPanel>
+        </Grid>
+    </ScrollViewer>
 </Page>

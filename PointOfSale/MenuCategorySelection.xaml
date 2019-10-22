@@ -10,6 +10,7 @@
       FontSize="20"
       MinHeight="250" MinWidth="200">
 
+    <ScrollViewer>
     <Grid x:Name="uxGrid" MinWidth="200" MinHeight="200">
         <Grid.ColumnDefinitions>
             <ColumnDefinition AllowDrop="True"/>
@@ -34,4 +35,5 @@
         <Label Grid.ColumnSpan="2" Content="Add To Order" HorizontalAlignment="Center" Height="40" Margin="10" VerticalAlignment="Center"/>
 
     </Grid>
+    </ScrollViewer>
 </Page>

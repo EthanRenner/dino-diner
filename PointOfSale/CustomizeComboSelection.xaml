@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CustomizeComboSelection">
-
+    <ScrollViewer>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition AllowDrop="True"/>
@@ -98,4 +98,5 @@
             </Border>
         </Grid>
     </Grid>
+    </ScrollViewer>
 </Page>
