@@ -2,20 +2,28 @@
  * Author: Ethan Renner
  */
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
-    public class Order
+    public class Order: INotifyPropertyChanged
     {
+        private ObservableCollection<IOrderItem> items = new ObservableCollection<IOrderItem>();
         /// <summary>
         /// The items added to this order.
         /// </summary>
         public ObservableCollection<IOrderItem> Items
         {
-            get;
-            set;
-        } = new ObservableCollection<IOrderItem>();
+            get
+            {
+                return items;
+            }
+            set
+            {
+                items = value;
+            }
+        }
 
         /// <summary>
         /// The total price from the prices of all order items.
@@ -63,6 +71,25 @@ namespace DinoDiner.Menu
             {
                 return SubtotalCost + SalesTaxCost;
             }
+        }
+
+        public Order()
+        {
+            this.Items.CollectionChanged += OnCollectionChange;
+        }
+
+        public void OnCollectionChange(object sender, NotifyCollectionChangedEventArgs args)
+        {
+            NotifyOfPropertyChanged("SubtotalCost");
+            NotifyOfPropertyChanged("TotalCost");
+            NotifyOfPropertyChanged("Items");
+        }
+
+        // INotifyPropertyChanged
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void NotifyOfPropertyChanged(string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

@@ -58,6 +58,7 @@ namespace PointOfSale
                 {
                     side.Size = DinoDiner.Menu.Size.Small;
                     NavigationService.Navigate(new MenuCategorySelection());
+                    
                 }
             }
         }
