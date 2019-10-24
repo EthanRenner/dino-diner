@@ -18,7 +18,7 @@
             </Grid.RowDefinitions>
             <Grid.Resources>
                 <Style TargetType="Button">
-                    <Setter Property="Width" Value="175"/>
+                    <Setter Property="Width" Value="170"/>
                     <Setter Property="Height" Value="80"/>
                     <Setter Property="Margin" Value="10"/>
                 </Style>
@@ -38,43 +38,43 @@
             </Grid.Resources>
             <TextBlock Grid.Row="0" FontSize="20">Add To Order</TextBlock>
             <WrapPanel Grid.Row="1">
-                <Button>
+                <Button Click="OnBrontowurstClick">
                     <StackPanel>
                         <Image Source="Assets/DinoDiner-01.png" />
                         <TextBlock Text="Brontowurst"></TextBlock>
                     </StackPanel>
                 </Button>
-                <Button>
+                <Button Click="OnDinoNuggetsClick">
                     <StackPanel>
                         <Image Source="Assets/DinoDiner-02.png"/>
                         <TextBlock Text="Dino-Nuggets"></TextBlock>
                     </StackPanel>
                 </Button>
-                <Button>
+                <Button Click="OnPrehistoricPBJClick">
                     <StackPanel>
                         <Image Source="Assets/DinoDiner-03.png"/>
                         <TextBlock Text="Prehistoric&#10;PB&amp;J Combo"></TextBlock>
                     </StackPanel>
                 </Button>
-                <Button>
+                <Button Click="OnPterodactylWingsClick">
                     <StackPanel>
                         <Image Source="Assets/DinoDiner-04.png"/>
                         <TextBlock Text="Pterodactyl&#10;Wings"></TextBlock>
                     </StackPanel>
                 </Button>
-                <Button>
+                <Button Click="OnSteakosaurusBurgerClick">
                     <StackPanel>
                         <Image Source="Assets/DinoDiner-05.png"/>
                         <TextBlock Text="Steakosaurus&#10;Burger"></TextBlock>
                     </StackPanel>
                 </Button>
-                <Button>
+                <Button Click="OnTRexKingBurgerClick">
                     <StackPanel>
                         <Image Source="Assets/DinoDiner-06.png"/>
                         <TextBlock Text="T-Rex&#10;KingBurger"></TextBlock>
                     </StackPanel>
                 </Button>
-                <Button>
+                <Button Click="OnVelociWrapClick">
                     <StackPanel>
                         <Image Source="Assets/DinoDiner-07.png"/>
                         <TextBlock Text="Veloci-Wrap"></TextBlock>

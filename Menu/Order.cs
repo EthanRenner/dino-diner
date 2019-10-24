@@ -2,6 +2,7 @@
  * Author: Ethan Renner
  */
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {

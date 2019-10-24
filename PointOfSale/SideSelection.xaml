@@ -47,25 +47,25 @@
                     </Style>
                 </Grid.Resources>
                 <TextBlock Grid.Row="0" FontSize="20">Side</TextBlock>
-                <Button Grid.Row="1" Click="AddFryceritops">
+                <Button Click="OnFryceritopsClick" Grid.Row="1">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Assets/DinoDiner-08.png" />
-                        <TextBlock Text="Friceritops"></TextBlock>
+                        <TextBlock Text="Fryceritops"></TextBlock>
                     </StackPanel>
                 </Button>
-                <Button Grid.Row="2">
+                <Button Click="OnMeteorMacAndCheeseClick" Grid.Row="2">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Assets/DinoDiner-09.png" />
                         <TextBlock Text="Meteor Mac&#10;&amp; Cheese"></TextBlock>
                     </StackPanel>
                 </Button>
-                <Button Grid.Row="3">
+                <Button Click="OnMezzorellaSticksClick" Grid.Row="3">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Assets/DinoDiner-10.png" />
                         <TextBlock Text="Mezzorella&#10;Sticks"></TextBlock>
                     </StackPanel>
                 </Button>
-                <Button Grid.Row="4">
+                <Button Click="OnTriceritotsClick" Grid.Row="4">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Assets/DinoDiner-11.png" />
                         <TextBlock Text="Triceritots"></TextBlock>
@@ -81,37 +81,17 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.Resources>
-                    <Style TargetType="RadioButton">
+                    <Style TargetType="Button">
                         <Setter Property="Width" Value="175"/>
                         <Setter Property="Height" Value="80"/>
                         <Setter Property="VerticalContentAlignment" Value="Center"/>
                         <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                        <Setter Property="GroupName" Value="Size"/>
-                    </Style>
-                    <Style TargetType="Border">
-                        <Setter Property="HorizontalAlignment" Value="Center"/>
-                        <Setter Property="VerticalAlignment" Value="Center"/>
-                        <Setter Property="Background" Value="#FFDDDDDD"/>
-                        <Setter Property="BorderBrush" Value="#FF707070"/>
-                        <Setter Property="BorderThickness" Value="1"/>
                     </Style>
                 </Grid.Resources>
                 <TextBlock Grid.Row="0" FontSize="20">Size</TextBlock>
-                <Border Grid.Row="1">
-                    <RadioButton>
-                        <TextBlock Text="Small"></TextBlock>
-                    </RadioButton>
-                </Border>
-                <Border Grid.Row="2">
-                    <RadioButton >
-                        <TextBlock Text="Medium"></TextBlock>
-                    </RadioButton>
-                </Border>
-                <Border Grid.Row="3">
-                    <RadioButton Click="MakeLarge">
-                        <TextBlock Text="Large"></TextBlock>
-                    </RadioButton>
-                </Border>
+                <Button Content="Small" Click="MakeSmall" Grid.Column="1" Grid.Row="1"/>
+                <Button Content="Medium" Click="MakeMedium" Grid.Column="1" Grid.Row="2"/>
+                <Button Content="Large" Click="MakeLarge" Grid.Column="1" Grid.Row="3"/>
             </Grid>
         </Grid>
     </ScrollViewer>

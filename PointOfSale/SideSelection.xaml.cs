@@ -17,14 +17,61 @@ namespace PointOfSale
         {
             InitializeComponent();
         }
-        public void AddFryceritops(object sender, RoutedEventArgs args)
+        public void OnFryceritopsClick(object sender, RoutedEventArgs args)
         {
             if (DataContext is Order order)
             {
                 order.Items.Add(new Fryceritops());
+                CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+            }
+        }
+        public void OnMeteorMacAndCheeseClick(object sender, RoutedEventArgs args)
+        {
+            if (DataContext is Order order)
+            {
+                order.Items.Add(new MeteorMacAndCheese());
+                CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+            }
+        }
+        public void OnMezzorellaSticksClick(object sender, RoutedEventArgs args)
+        {
+            if (DataContext is Order order)
+            {
+                order.Items.Add(new MezzorellaSticks());
+                CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+            }
+        }
+        public void OnTriceritotsClick(object sender, RoutedEventArgs args)
+        {
+            if (DataContext is Order order)
+            {
+                order.Items.Add(new Triceritots());
+                CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
             }
         }
 
+        public void MakeSmall(object sender, RoutedEventArgs args)
+        {
+            if (DataContext is Order order)
+            {
+                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Side side)
+                {
+                    side.Size = DinoDiner.Menu.Size.Small;
+                    NavigationService.Navigate(new MenuCategorySelection());
+                }
+            }
+        }
+        public void MakeMedium(object sender, RoutedEventArgs args)
+        {
+            if (DataContext is Order order)
+            {
+                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Side side)
+                {
+                    side.Size = DinoDiner.Menu.Size.Medium;
+                    NavigationService.Navigate(new MenuCategorySelection());
+                }
+            }
+        }
         public void MakeLarge(object sender, RoutedEventArgs args)
         {
             if (DataContext is Order order)
@@ -32,6 +79,7 @@ namespace PointOfSale
                 if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Side side)
                 {
                     side.Size = DinoDiner.Menu.Size.Large;
+                    NavigationService.Navigate(new MenuCategorySelection());
                 }
             }
         }

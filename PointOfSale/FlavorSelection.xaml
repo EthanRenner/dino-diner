@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PointOfSale"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="600"
       Title="FlavorSelection">
 
     <ScrollViewer>
@@ -19,7 +19,7 @@
         </Grid.RowDefinitions>
         <Grid.Resources>
             <Style TargetType="Button">
-                <Setter Property="Width" Value="175"/>
+                <Setter Property="Width" Value="170"/>
                 <Setter Property="Height" Value="80"/>
                 <Setter Property="Margin" Value="10"/>
             </Style>
@@ -36,25 +36,25 @@
         </Grid.Resources>
         <TextBlock Grid.Row="0" FontSize="20">Add To Order</TextBlock>
         <WrapPanel Grid.Row="1">
-            <Button>
+            <Button Click="OnCherryClick">
                 <TextBlock Text="Cherry"></TextBlock>
             </Button>
-            <Button>
+            <Button Click="OnChocolateClick">
                 <TextBlock Text="Chocolate"></TextBlock>
             </Button>
-            <Button>
+            <Button Click="OnColaClick">
                 <TextBlock Text="Cola"></TextBlock>
             </Button>
-            <Button>
+            <Button Click="OnLimeClick">
                 <TextBlock Text="Lime"></TextBlock>
             </Button>
-            <Button>
+            <Button Click="OnOrangeClick">
                 <TextBlock Text="Orange"></TextBlock>
             </Button>
-            <Button>
+            <Button Click="OnRootBeerClick">
                 <TextBlock Text="Root Beer"></TextBlock>
             </Button>
-            <Button>
+            <Button Click="OnVanillaClick">
                 <TextBlock Text="Vanilla"></TextBlock>
             </Button>
         </WrapPanel>

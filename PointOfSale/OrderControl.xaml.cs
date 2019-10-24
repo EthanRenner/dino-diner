@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DinoDiner.Menu;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,17 @@ namespace PointOfSale
         public OrderControl()
         {
             InitializeComponent();
+        }
+
+        public void OnRemoveClick(object sender, RoutedEventArgs args)
+        {
+            if (DataContext is Order order)
+            {
+                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is IOrderItem item)
+                {
+                    order.Items.Remove(item);
+                }
+            }
         }
     }
 }

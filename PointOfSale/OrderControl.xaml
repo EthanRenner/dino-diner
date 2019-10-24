@@ -11,6 +11,7 @@
             <RowDefinition Height="20"/>
             <RowDefinition/>
             <RowDefinition Height="20"/>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -31,30 +32,39 @@
         <ListBox Grid.Row="1" 
                  Grid.ColumnSpan="2"
                  ItemsSource="{Binding Path=Items}"
-                 IsSynchronizedWithCurrentItem="True">
+                 IsSynchronizedWithCurrentItem="True"
+                 Name="listbox">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical">
-                        <TextBlock Text="{Binding Path=Description}"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Button Name="Remove" Click="OnRemoveClick" Content="X" Grid.Column="0"/>
+                            <TextBlock Text="{Binding Path=Description}" Grid.Column="1"/>
+                        </Grid>                        
                         <ListBox ItemsSource="{Binding Path=Special}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        <Button Content="Remove Selected Item" Click="OnRemoveClick" Grid.ColumnSpan="2" Grid.Row="2"/>
         <TextBlock Text="$" 
-                   Grid.Row="2" 
+                   Grid.Row="3" 
                    Grid.Column="0" 
                    TextAlignment="Right" 
                    FontWeight="Bold"/>
         <TextBlock Text="{Binding Path=SubtotalCost, StringFormat=n2}" 
-                   Grid.Row="2" 
+                   Grid.Row="3" 
                    Grid.Column="1" 
                    FontWeight="Bold"/>
         <Button Content="Cancel" 
-                Grid.Row="3" 
+                Grid.Row="4" 
                 Grid.Column="0"/>
         <Button Content="Pay"
-                Grid.Row="3" 
+                Grid.Row="4" 
                 Grid.Column="1"/>
     </Grid>
 </UserControl>
