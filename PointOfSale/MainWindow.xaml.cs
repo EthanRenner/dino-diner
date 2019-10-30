@@ -19,15 +19,15 @@ namespace PointOfSale
             Order order = DataContext as Order;
             if (order != null)
             {
-                order.Items.Add(new DinoNuggets());
-                order.Items.Add(new Sodasaurus());
+                order.Add(new DinoNuggets());
+                order.Add(new Sodasaurus());
                 Triceritots tt = new Triceritots();
                 tt.Size = DinoDiner.Menu.Size.Medium;
-                order.Items.Add(tt);
+                order.Add(tt);
                 SteakosaurusBurger sb = new SteakosaurusBurger();
                 sb.HoldBun();
                 sb.HoldMustard();
-                order.Items.Add(sb);
+                order.Add(sb);
             }
         }
 

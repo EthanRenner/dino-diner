@@ -32,7 +32,7 @@ namespace PointOfSale
             {
                 if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is IOrderItem item)
                 {
-                    order.Items.Remove(item);
+                    order.Remove(item);
                 }
             }
         }

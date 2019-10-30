@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Menu\Menu.csproj" />
+    <ProjectReference Include="..\PointOfSale\PointOfSale.csproj" />
   </ItemGroup>
 
   <ItemGroup>

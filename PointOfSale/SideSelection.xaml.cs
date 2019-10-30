@@ -21,7 +21,7 @@ namespace PointOfSale
         {
             if (DataContext is Order order)
             {
-                order.Items.Add(new Fryceritops());
+                order.Add(new Fryceritops());
                 CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
             }
         }
@@ -29,7 +29,7 @@ namespace PointOfSale
         {
             if (DataContext is Order order)
             {
-                order.Items.Add(new MeteorMacAndCheese());
+                order.Add(new MeteorMacAndCheese());
                 CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
             }
         }
@@ -37,7 +37,7 @@ namespace PointOfSale
         {
             if (DataContext is Order order)
             {
-                order.Items.Add(new MezzorellaSticks());
+                order.Add(new MezzorellaSticks());
                 CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
             }
         }
@@ -45,7 +45,7 @@ namespace PointOfSale
         {
             if (DataContext is Order order)
             {
-                order.Items.Add(new Triceritots());
+                order.Add(new Triceritots());
                 CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
             }
         }

@@ -1,28 +1,27 @@
 ﻿/* OrderItemTest.cs
  * Author: Ethan Renner
  */
+using System.ComponentModel;
 using DinoDiner.Menu;
-using System.Collections.ObjectModel;
 using Xunit;
 
-namespace MenuTest
+namespace DinoDiner.MenuTest
 {
     public class OrderItemTest
     {
         [Fact]
         public void PriceAddition()
         {
-            ObservableCollection<IOrderItem> oc = new ObservableCollection<IOrderItem>();
+            Order order = new Order();
             OrderItem oi1 = new OrderItem();
             oi1.Price = 10.0;
-            oc.Add(oi1);
+            order.Add(oi1);
+            
 
             OrderItem oi2 = new OrderItem();
             oi2.Price = 9.70;
-            oc.Add(oi2);
+            order.Add(oi2);
 
-            Order order = new Order();
-            order.Items = oc;
 
             Assert.Equal<double>(19.70, order.SubtotalCost);
             Assert.Equal<double>(19.70*order.SalesTaxRate, order.SalesTaxCost);
@@ -32,17 +31,30 @@ namespace MenuTest
         [Fact]
         public void PriceSubtraction()
         {
-            ObservableCollection<IOrderItem> oc = new ObservableCollection<IOrderItem>();
+            Order order = new Order();
+            OrderItem oi1 = new OrderItem();
+            oi1.Price = 20.0;
+            order.Add(oi1);
+
+            OrderItem oi2 = new OrderItem();
+            oi2.Price = -.30;
+            order.Add(oi2);
+
+            Assert.Equal<double>(19.70, order.SubtotalCost);
+            Assert.Equal<double>(19.70 * order.SalesTaxRate, order.SalesTaxCost);
+            Assert.Equal<double>(19.70 * (order.SalesTaxRate + 1), order.TotalCost);
+        }
+        [Fact]
+        public void PriceSubtractionNegative()
+        {
+            Order order = new Order();
             OrderItem oi1 = new OrderItem();
             oi1.Price = -10.0;
-            oc.Add(oi1);
+            order.Add(oi1);
 
             OrderItem oi2 = new OrderItem();
             oi2.Price = 9.70;
-            oc.Add(oi2);
-
-            Order order = new Order();
-            order.Items = oc;
+            order.Add(oi2);
 
             Assert.Equal<double>(0, order.SubtotalCost);
             Assert.Equal<double>(0, order.SalesTaxCost);
@@ -55,6 +67,9 @@ namespace MenuTest
             public string Description { get; set; }
 
             public string[] Special { get; set; }
+
+            public event PropertyChangedEventHandler PropertyChanged;
+
         }
     }
 }
