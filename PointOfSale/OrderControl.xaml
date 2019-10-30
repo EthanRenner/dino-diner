@@ -11,7 +11,6 @@
             <RowDefinition Height="20"/>
             <RowDefinition/>
             <RowDefinition Height="20"/>
-            <RowDefinition Height="20"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -31,9 +30,10 @@
                    Margin="5,0,0,0"/>
         <ListBox Grid.Row="1" 
                  Grid.ColumnSpan="2"
-                 ItemsSource="{Binding Path=Items}"
+                 ItemsSource="{Binding Path=Items, UpdateSourceTrigger=PropertyChanged}"
                  IsSynchronizedWithCurrentItem="True"
-                 Name="listbox">
+                 Name="listbox"
+                 SelectionChanged="OnSelectionChange">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical">
@@ -42,29 +42,28 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <Button Name="Remove" Click="OnRemoveClick" Content="X" Grid.Column="0"/>
-                            <TextBlock Text="{Binding Path=Description}" Grid.Column="1"/>
+                            <Button Name="Remove" Click="OnRemoveClick" Width ="20" Content="X" HorizontalAlignment="Left" Grid.Column="0"/>
+                            <TextBlock Text="{Binding Path=Description}" HorizontalAlignment="Left" Grid.Column="1"/>
                         </Grid>                        
                         <ListBox ItemsSource="{Binding Path=Special}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button Content="Remove Selected Item" Click="OnRemoveClick" Grid.ColumnSpan="2" Grid.Row="2"/>
         <TextBlock Text="$" 
-                   Grid.Row="3" 
+                   Grid.Row="2" 
                    Grid.Column="0" 
                    TextAlignment="Right" 
                    FontWeight="Bold"/>
         <TextBlock Text="{Binding Path=SubtotalCost, StringFormat=n2}" 
-                   Grid.Row="3" 
+                   Grid.Row="2" 
                    Grid.Column="1" 
                    FontWeight="Bold"/>
         <Button Content="Cancel" 
-                Grid.Row="4" 
+                Grid.Row="3" 
                 Grid.Column="0"/>
         <Button Content="Pay"
-                Grid.Row="4" 
+                Grid.Row="3" 
                 Grid.Column="1"/>
     </Grid>
 </UserControl>
