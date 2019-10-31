@@ -97,7 +97,7 @@ namespace DinoDiner.MenuTest.Drinks
                     jj.Size = Size.Large;
                 });
 
-            string[] roomForCreamProperties = { "RoomForCream", "Description" };
+            string[] roomForCreamProperties = { "RoomForCream", "Special" };
             foreach (string property in roomForCreamProperties)
                 Assert.PropertyChanged(jj, property, () =>
                 {
