@@ -16,19 +16,7 @@ namespace PointOfSale
         public MainWindow()
         {
             InitializeComponent();
-            //Order order = DataContext as Order;
-            //if (order != null)
-            //{
-            //    order.Items.Add(new DinoNuggets());
-            //    order.Items.Add(new Sodasaurus());
-            //    Triceritots tt = new Triceritots();
-            //    tt.Size = DinoDiner.Menu.Size.Medium;
-            //    order.Items.Add(tt);
-            //    SteakosaurusBurger sb = new SteakosaurusBurger();
-            //    sb.HoldBun();
-            //    sb.HoldMustard();
-            //    order.Items.Add(sb);
-            //}
+            OrderControl.NavigationService = OrderUI.NavigationService;
         }
 
         private void PassOnDataContext()

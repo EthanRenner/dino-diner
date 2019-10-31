@@ -34,11 +34,13 @@ namespace PointOfSale
                 {
                     if (element.DataContext is IOrderItem item)
                     {
-                        order.Items.Remove(item);
+                        order.Remove(item);
                     }
                 }
             }
         }
+
+        public NavigationService NavigationService { get; set; }
 
         public void OnSelectionChange(object sender, RoutedEventArgs args)
         {
@@ -46,11 +48,11 @@ namespace PointOfSale
             {
                 if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Side side)
                 {
-                    //NavigationService.Navigate(new SideSelection());
+                    NavigationService?.Navigate(new SideSelection(side));
                 }
                 else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Drink drink)
                 {
-                    //NavigationService.Navigate(new DrinkSelection());
+                    NavigationService?.Navigate(new DrinkSelection(drink));
                 }
             }
         }

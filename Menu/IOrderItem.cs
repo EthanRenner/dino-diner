@@ -2,12 +2,14 @@
  * Author: Ethan Renner
  */
 
+using System.ComponentModel;
+
 namespace DinoDiner.Menu
 {
     /// <summary>
     /// Interface for an order item. Requires price, description, and specials list properties.
     /// </summary>
-    public interface IOrderItem
+    public interface IOrderItem: INotifyPropertyChanged
     {
         /// <summary>
         /// Price of the order item.

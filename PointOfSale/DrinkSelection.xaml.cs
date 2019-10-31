@@ -16,12 +16,18 @@ namespace PointOfSale
     public partial class DrinkSelection : Page
     {
         private Button HoldIceButton, AddIceButton, AddLemonButton, SweetButton, DecafButton, FlavorButton, RoomForCreamButton;
+        private Drink drink;
         public DrinkSelection()
         {
             InitializeComponent();
             InitializeButtons();
         }
-
+        public DrinkSelection(Drink drink)
+        {
+            this.drink = drink;
+            InitializeComponent();
+            InitializeButtons();
+        }
 
         // Initializes specialty buttons and their settings
         private void InitializeButtons()
@@ -79,7 +85,7 @@ namespace PointOfSale
         {
             if (DataContext is Order order)
             {
-                order.Items.Add(new Sodasaurus());
+                order.Add(new Sodasaurus());
                 CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
                 uxSpecialsGrid.Children.Clear();
                 uxSpecialsGrid.Children.Add(uxSpecialsHeader);
@@ -93,7 +99,7 @@ namespace PointOfSale
         {
             if (DataContext is Order order)
             {
-                order.Items.Add(new Tyrannotea());
+                order.Add(new Tyrannotea());
                 CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
 
                 // update specials
@@ -110,7 +116,7 @@ namespace PointOfSale
         {
             if (DataContext is Order order)
             {
-                order.Items.Add(new JurassicJava());
+                order.Add(new JurassicJava());
                 CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
 
                 uxSpecialsGrid.Children.Clear();
@@ -126,7 +132,7 @@ namespace PointOfSale
         {
             if (DataContext is Order order)
             {
-                order.Items.Add(new Water());
+                order.Add(new Water());
                 CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
                 uxSpecialsGrid.Children.Clear();
                 uxSpecialsGrid.Children.Add(uxSpecialsHeader);

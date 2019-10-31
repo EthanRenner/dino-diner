@@ -3,6 +3,7 @@
  */
 using DinoDiner.Menu;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using Xunit;
 
 namespace MenuTest
@@ -55,6 +56,8 @@ namespace MenuTest
             public string Description { get; set; }
 
             public string[] Special { get; set; }
+
+            public event PropertyChangedEventHandler PropertyChanged;
         }
     }
 }

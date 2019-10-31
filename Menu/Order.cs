@@ -1,6 +1,7 @@
 ﻿/* Order.cs
  * Author: Ethan Renner
  */
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
@@ -9,22 +10,18 @@ namespace DinoDiner.Menu
 {
     public class Order: INotifyPropertyChanged
     {
-        private ObservableCollection<IOrderItem> items = new ObservableCollection<IOrderItem>();
+        private List<IOrderItem> items = new List<IOrderItem>();
         /// <summary>
         /// The items added to this order.
         /// </summary>
-        public ObservableCollection<IOrderItem> Items
+        public IOrderItem[] Items
         {
             get
             {
-                return items;
-            }
-            set
-            {
-                items = value;
+                return items.ToArray();
             }
         }
-
+        
         /// <summary>
         /// The total price from the prices of all order items.
         /// </summary>
@@ -75,7 +72,7 @@ namespace DinoDiner.Menu
 
         public Order()
         {
-            this.Items.CollectionChanged += OnCollectionChange;
+            //this.Items.CollectionChanged += OnCollectionChange;
         }
 
         public void OnCollectionChange(object sender, NotifyCollectionChangedEventArgs args)
@@ -90,6 +87,32 @@ namespace DinoDiner.Menu
         protected void NotifyOfPropertyChanged(string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public void Add(IOrderItem item)
+        {
+            item.PropertyChanged += OnItemPropertyChanged;
+            items.Add(item);
+            NotifyOfPropertyChanged("SubtotalCost");
+            NotifyOfPropertyChanged("TotalCost");
+            NotifyOfPropertyChanged("SalesTaxCost");
+            NotifyOfPropertyChanged("Items");
+        }
+        public bool Remove(IOrderItem item)
+        {
+            bool removed = items.Remove(item);
+            NotifyOfPropertyChanged("SubtotalCost");
+            NotifyOfPropertyChanged("TotalCost");
+            NotifyOfPropertyChanged("SalesTaxCost");
+            NotifyOfPropertyChanged("Items");
+            return removed;
+        }
+        private void OnItemPropertyChanged(object sender, PropertyChangedEventArgs args)
+        {
+            NotifyOfPropertyChanged("SubtotalCost");
+            NotifyOfPropertyChanged("TotalCost");
+            NotifyOfPropertyChanged("SalesTaxCost");
+            NotifyOfPropertyChanged("Items");
         }
     }
 }
