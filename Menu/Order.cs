@@ -10,13 +10,13 @@ namespace DinoDiner.Menu
 {
     public class Order: INotifyPropertyChanged
     {
-        private List<IOrderItem> items = new List<IOrderItem>();
+        private ObservableCollection<IOrderItem> items = new ObservableCollection<IOrderItem>();
         /// <summary>
         /// The items added to this order.
         /// </summary>
-        public IOrderItem[] Items
+        public ObservableCollection<IOrderItem> Items
         {
-            get { return items.ToArray(); }
+            get { return items; }
         }
 
         /// <summary>
@@ -84,13 +84,19 @@ namespace DinoDiner.Menu
         {
             item.PropertyChanged += NotifyItemChanged;
             items.Add(item);
-            NotifyItemChanged(this, null);
+            NotifyOfPropertyChanged("Items");
+            NotifyOfPropertyChanged("TotalCost");
+            NotifyOfPropertyChanged("SalesTaxCost");
+            NotifyOfPropertyChanged("SubtotalCost");
         }
 
         public bool Remove(IOrderItem item)
         {
             bool removed = items.Remove(item);
-            NotifyItemChanged(this, null);
+            NotifyOfPropertyChanged("Items");
+            NotifyOfPropertyChanged("TotalCost");
+            NotifyOfPropertyChanged("SalesTaxCost");
+            NotifyOfPropertyChanged("SubtotalCost");
             return removed;
         }
     }

@@ -28,12 +28,13 @@
                    TextAlignment="Left" 
                    FontWeight="Bold" 
                    Margin="5,0,0,0"/>
-        <ListBox Grid.Row="1" 
+        <ListBox Name="OrderListBox"
+                 Grid.Row="1" 
                  Grid.ColumnSpan="2"
                  ItemsSource="{Binding Path=Items, UpdateSourceTrigger=PropertyChanged}"
                  IsSynchronizedWithCurrentItem="True"
-                 Name="listbox"
-                 SelectionChanged="OnSelectionChange">
+                 SelectionChanged="OnSelectionChange"
+                 >
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical">

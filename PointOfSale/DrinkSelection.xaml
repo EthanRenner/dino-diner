@@ -48,25 +48,25 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" FontSize="20">Drink</TextBlock>
-                <Button Click="OnSodasaurusClick" Grid.Row="1">
+                <Button Name="SodasaurusButton" Click="OnSodasaurusClick" Grid.Row="1">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Assets/DinoDiner-14.png" />
                         <TextBlock Text="Sodasaurus"></TextBlock>
                     </StackPanel>
                 </Button>
-                <Button Click="OnTyrannoteaClick" Grid.Row="2">
+                <Button Name="TyrannoteaButton" Click="OnTyrannoteaClick" Grid.Row="2">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Assets/DinoDiner-12.png" />
                         <TextBlock Text="Tyrannotea"></TextBlock>
                     </StackPanel>
                 </Button>
-                <Button Click="OnJurassicJavaClick" Grid.Row="3">
+                <Button Name="JurassicJavaButton" Click="OnJurassicJavaClick" Grid.Row="3">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Assets/DinoDiner-13.png" />
                         <TextBlock Text="Jurassic Java"></TextBlock>
                     </StackPanel>
                 </Button>
-                <Button Click="OnWaterClick" Grid.Row="4">
+                <Button Name="WaterButton" Click="OnWaterClick" Grid.Row="4">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Assets/DinoDiner-15.png" />
                         <TextBlock Text="Water"></TextBlock>
@@ -82,9 +82,9 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" FontSize="20">Size</TextBlock>
-                <Button Content="Small" Click="MakeSmall" Grid.Row="1"/>
-                <Button Content="Medium" Click="MakeMedium" Grid.Row="2"/>
-                <Button Content="Large" Click="MakeLarge" Grid.Row="3"/>
+                <Button Name="SmallButton" Content="Small" Click="MakeSmall" Grid.Row="1"/>
+                <Button Name="MediumButton" Content="Medium" Click="MakeMedium" Grid.Row="2"/>
+                <Button Name="LargeButton" Content="Large" Click="MakeLarge" Grid.Row="3"/>
             </Grid>
 
             <Grid Name="uxSpecialsGrid" Grid.Column="2" Grid.Row="1">

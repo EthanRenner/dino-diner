@@ -1,18 +1,8 @@
 ﻿using DinoDiner.Menu;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace PointOfSale
 {
@@ -46,13 +36,14 @@ namespace PointOfSale
             {
                 if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Side side)
                 {
-                    //NavigationService.Navigate(new SideSelection());
+                    NavigationService.Navigate(new SideSelection(side));
                 }
                 else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Drink drink)
                 {
-                    //NavigationService.Navigate(new DrinkSelection());
+                    NavigationService.Navigate(new DrinkSelection(drink));
                 }
             }
         }
+        public NavigationService NavigationService { get; set; }
     }
 }

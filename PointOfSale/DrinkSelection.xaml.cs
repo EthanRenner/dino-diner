@@ -16,13 +16,39 @@ namespace PointOfSale
     public partial class DrinkSelection : Page
     {
         private Button HoldIceButton, AddIceButton, AddLemonButton, SweetButton, DecafButton, FlavorButton, RoomForCreamButton;
+        private Drink drink;
         public DrinkSelection()
         {
             InitializeComponent();
             InitializeButtons();
+            EnableDrinkButtons();
+            DisableSpecialButtons();
         }
-
-
+        public DrinkSelection(Drink drink)
+        {
+            this.drink = drink;
+            InitializeComponent();
+            InitializeButtons();
+            DisableDrinkButtons();
+            EnableSpecialButtons();
+            if (drink is Sodasaurus)
+            {
+                AddSodasaurusButtons();
+            }
+            else if (drink is Tyrannotea)
+            {
+                AddTyrannoteaButtons();
+            }
+            else if (drink is JurassicJava)
+            {
+                AddJurassicJavaButtons();
+            }
+            else if (drink is Water)
+            {
+                AddWaterButtons();
+            }
+        }
+        
         // Initializes specialty buttons and their settings
         private void InitializeButtons()
         {
@@ -79,13 +105,22 @@ namespace PointOfSale
         {
             if (DataContext is Order order)
             {
-                order.Add(new Sodasaurus());
+                drink = new Sodasaurus();
+                order.Add(drink);
                 CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
-                uxSpecialsGrid.Children.Clear();
-                uxSpecialsGrid.Children.Add(uxSpecialsHeader);
-                uxSpecialsGrid.Children.Add(HoldIceButton);
-                uxSpecialsGrid.Children.Add(FlavorButton);
+
+                AddSodasaurusButtons();
+
+                DisableDrinkButtons();
+                EnableSpecialButtons();
             }
+        }
+        private void AddSodasaurusButtons()
+        {
+            uxSpecialsGrid.Children.Clear();
+            uxSpecialsGrid.Children.Add(uxSpecialsHeader);
+            uxSpecialsGrid.Children.Add(HoldIceButton);
+            uxSpecialsGrid.Children.Add(FlavorButton);
         }
 
         // Sets the special buttons according to what tyrannotea needs
@@ -93,16 +128,23 @@ namespace PointOfSale
         {
             if (DataContext is Order order)
             {
-                order.Add(new Tyrannotea());
+                drink = new Tyrannotea();
+                order.Add(drink);
                 CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
 
-                // update specials
-                uxSpecialsGrid.Children.Clear();
-                uxSpecialsGrid.Children.Add(uxSpecialsHeader);
-                uxSpecialsGrid.Children.Add(HoldIceButton);
-                uxSpecialsGrid.Children.Add(AddLemonButton);
-                uxSpecialsGrid.Children.Add(SweetButton);
+                AddTyrannoteaButtons();
+
+                DisableDrinkButtons();
+                EnableSpecialButtons();
             }
+        }
+        private void AddTyrannoteaButtons()
+        {
+            uxSpecialsGrid.Children.Clear();
+            uxSpecialsGrid.Children.Add(uxSpecialsHeader);
+            uxSpecialsGrid.Children.Add(HoldIceButton);
+            uxSpecialsGrid.Children.Add(AddLemonButton);
+            uxSpecialsGrid.Children.Add(SweetButton);
         }
 
         // Sets the special buttons according to what jurassic java needs
@@ -110,15 +152,23 @@ namespace PointOfSale
         {
             if (DataContext is Order order)
             {
-                order.Add(new JurassicJava());
+                drink = new JurassicJava();
+                order.Add(drink);
                 CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
 
-                uxSpecialsGrid.Children.Clear();
-                uxSpecialsGrid.Children.Add(uxSpecialsHeader);
-                uxSpecialsGrid.Children.Add(AddIceButton);
-                uxSpecialsGrid.Children.Add(DecafButton);
-                uxSpecialsGrid.Children.Add(RoomForCreamButton);
+                AddJurassicJavaButtons();
+
+                DisableDrinkButtons();
+                EnableSpecialButtons();
             }
+        }
+        private void AddJurassicJavaButtons()
+        {
+            uxSpecialsGrid.Children.Clear();
+            uxSpecialsGrid.Children.Add(uxSpecialsHeader);
+            uxSpecialsGrid.Children.Add(AddIceButton);
+            uxSpecialsGrid.Children.Add(DecafButton);
+            uxSpecialsGrid.Children.Add(RoomForCreamButton);
         }
 
         // Sets the special buttons according to what water needs
@@ -126,45 +176,39 @@ namespace PointOfSale
         {
             if (DataContext is Order order)
             {
-                order.Add(new Water());
+                drink = new Water();
+                order.Add(drink);
                 CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
-                uxSpecialsGrid.Children.Clear();
-                uxSpecialsGrid.Children.Add(uxSpecialsHeader);
-                uxSpecialsGrid.Children.Add(HoldIceButton);
-                uxSpecialsGrid.Children.Add(AddLemonButton);
+
+                AddWaterButtons();
+
+                DisableDrinkButtons();
+                EnableSpecialButtons();
             }
+        }
+        private void AddWaterButtons()
+        {
+            uxSpecialsGrid.Children.Clear();
+            uxSpecialsGrid.Children.Add(uxSpecialsHeader);
+            uxSpecialsGrid.Children.Add(HoldIceButton);
+            uxSpecialsGrid.Children.Add(AddLemonButton);
         }
 
         // Size methods
         public void MakeSmall(object sender, RoutedEventArgs args)
         {
-            if (DataContext is Order order)
-            {
-                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Drink drink)
-                {
-                    drink.Size = DinoDiner.Menu.Size.Small;
-                }
-            }
+            if (drink != null)
+                drink.Size = DinoDiner.Menu.Size.Small;
         }
         public void MakeMedium(object sender, RoutedEventArgs args)
         {
-            if (DataContext is Order order)
-            {
-                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Drink drink)
-                {
-                    drink.Size = DinoDiner.Menu.Size.Medium;
-                }
-            }
+            if (drink != null)
+                drink.Size = DinoDiner.Menu.Size.Medium;
         }
         public void MakeLarge(object sender, RoutedEventArgs args)
         {
-            if (DataContext is Order order)
-            {
-                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Drink drink)
-                {
-                    drink.Size = DinoDiner.Menu.Size.Large;
-                }
-            }
+            if (drink != null)
+                drink.Size = DinoDiner.Menu.Size.Large;
         }
 
         // Done methods
@@ -176,23 +220,18 @@ namespace PointOfSale
         // Specials methods
         public void OnIceClick(object sender, RoutedEventArgs args)
         {
-            if (DataContext is Order order)
-            {
-                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Drink drink)
-                {
-                    drink.Ice = !drink.Ice;
-                }
-            }
+            if (drink != null)
+                drink.Ice = !drink.Ice;
         }
         public void OnLemonClick(object sender, RoutedEventArgs args)
         {
-            if (DataContext is Order order)
+            if (drink != null)
             {
-                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Water w)
+                if (drink is Water w)
                 {
                     w.Lemon = !w.Lemon;
                 }
-                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Tyrannotea t)
+                else if (drink is Tyrannotea t)
                 {
                     t.Lemon = !t.Lemon;
                 }
@@ -200,8 +239,9 @@ namespace PointOfSale
         }
         public void OnSweetClick(object sender, RoutedEventArgs args)
         {
-            if (DataContext is Order order)
-            {if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Tyrannotea t)
+            if (drink != null)
+            {
+                if (drink is Tyrannotea t)
                 {
                     t.Sweet = !t.Sweet;
                 }
@@ -209,9 +249,9 @@ namespace PointOfSale
         }
         public void OnDecafClick(object sender, RoutedEventArgs args)
         {
-            if (DataContext is Order order)
+            if (drink != null)
             {
-                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is JurassicJava jj)
+                if (drink is JurassicJava jj)
                 {
                     jj.Decaf = !jj.Decaf;
                 }
@@ -219,9 +259,9 @@ namespace PointOfSale
         }
         public void OnRoomForCreamClick(object sender, RoutedEventArgs args)
         {
-            if (DataContext is Order order)
+            if (drink != null)
             {
-                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is JurassicJava jj)
+                if (drink is JurassicJava jj)
                 {
                     jj.RoomForCream = !jj.RoomForCream;
                 }
@@ -230,6 +270,49 @@ namespace PointOfSale
         public void OnFlavorsClick(object sender, RoutedEventArgs args)
         {
             NavigationService.Navigate(new FlavorSelection());
+        }
+
+        private void EnableDrinkButtons()
+        {
+            SodasaurusButton.IsEnabled = true;
+            JurassicJavaButton.IsEnabled = true;
+            TyrannoteaButton.IsEnabled = true;
+            WaterButton.IsEnabled = true;
+        }
+        private void DisableDrinkButtons()
+        {
+            SodasaurusButton.IsEnabled = false;
+            JurassicJavaButton.IsEnabled = false;
+            TyrannoteaButton.IsEnabled = false;
+            WaterButton.IsEnabled = false;
+        }
+        private void EnableSpecialButtons()
+        {
+            SmallButton.IsEnabled = true;
+            MediumButton.IsEnabled = true;
+            LargeButton.IsEnabled = true;
+
+            HoldIceButton.IsEnabled = true;
+            AddIceButton.IsEnabled = true;
+            AddLemonButton.IsEnabled = true;
+            SweetButton.IsEnabled = true;
+            DecafButton.IsEnabled = true;
+            RoomForCreamButton.IsEnabled = true;
+            FlavorButton.IsEnabled = true;
+        }
+        private void DisableSpecialButtons()
+        {
+            SmallButton.IsEnabled = false;
+            MediumButton.IsEnabled = false;
+            LargeButton.IsEnabled = false;
+
+            HoldIceButton.IsEnabled = false;
+            AddIceButton.IsEnabled = false;
+            AddLemonButton.IsEnabled = false;
+            SweetButton.IsEnabled = false;
+            DecafButton.IsEnabled = false;
+            RoomForCreamButton.IsEnabled = false;
+            FlavorButton.IsEnabled = false;
         }
     }
 }

@@ -47,25 +47,25 @@
                     </Style>
                 </Grid.Resources>
                 <TextBlock Grid.Row="0" FontSize="20">Side</TextBlock>
-                <Button Click="OnFryceritopsClick" Grid.Row="1">
+                <Button Name="FryceritopsButton" Click="OnFryceritopsClick" Grid.Row="1">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Assets/DinoDiner-08.png" />
                         <TextBlock Text="Fryceritops"></TextBlock>
                     </StackPanel>
                 </Button>
-                <Button Click="OnMeteorMacAndCheeseClick" Grid.Row="2">
+                <Button Name="MeteorMacAndCheeseButton" Click="OnMeteorMacAndCheeseClick" Grid.Row="2">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Assets/DinoDiner-09.png" />
                         <TextBlock Text="Meteor Mac&#10;&amp; Cheese"></TextBlock>
                     </StackPanel>
                 </Button>
-                <Button Click="OnMezzorellaSticksClick" Grid.Row="3">
+                <Button Name="MezzorellaSticksButton" Click="OnMezzorellaSticksClick" Grid.Row="3">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Assets/DinoDiner-10.png" />
                         <TextBlock Text="Mezzorella&#10;Sticks"></TextBlock>
                     </StackPanel>
                 </Button>
-                <Button Click="OnTriceritotsClick" Grid.Row="4">
+                <Button Name="TriceritotsButton" Click="OnTriceritotsClick" Grid.Row="4">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Assets/DinoDiner-11.png" />
                         <TextBlock Text="Triceritots"></TextBlock>
@@ -89,9 +89,9 @@
                     </Style>
                 </Grid.Resources>
                 <TextBlock Grid.Row="0" FontSize="20">Size</TextBlock>
-                <Button Content="Small" Click="MakeSmall" Grid.Column="1" Grid.Row="1"/>
-                <Button Content="Medium" Click="MakeMedium" Grid.Column="1" Grid.Row="2"/>
-                <Button Content="Large" Click="MakeLarge" Grid.Column="1" Grid.Row="3"/>
+                <Button Name="SmallButton" Content="Small" Click="MakeSmall" Grid.Column="1" Grid.Row="1"/>
+                <Button Name="MediumButton" Content="Medium" Click="MakeMedium" Grid.Column="1" Grid.Row="2"/>
+                <Button Name="LargeButton" Content="Large" Click="MakeLarge" Grid.Column="1" Grid.Row="3"/>
             </Grid>
         </Grid>
     </ScrollViewer>
