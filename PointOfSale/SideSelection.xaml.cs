@@ -13,16 +13,9 @@ namespace PointOfSale
     /// </summary>
     public partial class SideSelection : Page
     {
-        private Side side;
         public SideSelection()
         {
             InitializeComponent();
-        }
-
-        public SideSelection(Side side)
-        {
-            InitializeComponent();
-            this.side = side;
         }
         public void OnFryceritopsClick(object sender, RoutedEventArgs args)
         {

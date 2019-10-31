@@ -16,12 +16,9 @@ namespace DinoDiner.Menu
         /// </summary>
         public IOrderItem[] Items
         {
-            get
-            {
-                return items.ToArray();
-            }
+            get { return items.ToArray(); }
         }
-        
+
         /// <summary>
         /// The total price from the prices of all order items.
         /// </summary>
@@ -70,49 +67,31 @@ namespace DinoDiner.Menu
             }
         }
 
-        public Order()
-        {
-            //this.Items.CollectionChanged += OnCollectionChange;
-        }
-
-        public void OnCollectionChange(object sender, NotifyCollectionChangedEventArgs args)
-        {
-            NotifyOfPropertyChanged("SubtotalCost");
-            NotifyOfPropertyChanged("TotalCost");
-            NotifyOfPropertyChanged("Items");
-        }
-
-        // INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
-        protected void NotifyOfPropertyChanged(string propertyName = "")
+        private void NotifyOfPropertyChanged(string property)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
+        }
+        public void NotifyItemChanged(object sender, PropertyChangedEventArgs e)
+        {
+            NotifyOfPropertyChanged("Items");
+            NotifyOfPropertyChanged("TotalCost");
+            NotifyOfPropertyChanged("SalesTaxCost");
+            NotifyOfPropertyChanged("SubtotalCost");
         }
 
         public void Add(IOrderItem item)
         {
-            item.PropertyChanged += OnItemPropertyChanged;
+            item.PropertyChanged += NotifyItemChanged;
             items.Add(item);
-            NotifyOfPropertyChanged("SubtotalCost");
-            NotifyOfPropertyChanged("TotalCost");
-            NotifyOfPropertyChanged("SalesTaxCost");
-            NotifyOfPropertyChanged("Items");
+            NotifyItemChanged(this, null);
         }
+
         public bool Remove(IOrderItem item)
         {
             bool removed = items.Remove(item);
-            NotifyOfPropertyChanged("SubtotalCost");
-            NotifyOfPropertyChanged("TotalCost");
-            NotifyOfPropertyChanged("SalesTaxCost");
-            NotifyOfPropertyChanged("Items");
+            NotifyItemChanged(this, null);
             return removed;
-        }
-        private void OnItemPropertyChanged(object sender, PropertyChangedEventArgs args)
-        {
-            NotifyOfPropertyChanged("SubtotalCost");
-            NotifyOfPropertyChanged("TotalCost");
-            NotifyOfPropertyChanged("SalesTaxCost");
-            NotifyOfPropertyChanged("Items");
         }
     }
 }

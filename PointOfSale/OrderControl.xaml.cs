@@ -40,19 +40,17 @@ namespace PointOfSale
             }
         }
 
-        public NavigationService NavigationService { get; set; }
-
         public void OnSelectionChange(object sender, RoutedEventArgs args)
         {
             if (DataContext is Order order)
             {
                 if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Side side)
                 {
-                    NavigationService?.Navigate(new SideSelection(side));
+                    //NavigationService.Navigate(new SideSelection());
                 }
                 else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Drink drink)
                 {
-                    NavigationService?.Navigate(new DrinkSelection(drink));
+                    //NavigationService.Navigate(new DrinkSelection());
                 }
             }
         }

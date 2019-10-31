@@ -16,18 +16,12 @@ namespace PointOfSale
     public partial class DrinkSelection : Page
     {
         private Button HoldIceButton, AddIceButton, AddLemonButton, SweetButton, DecafButton, FlavorButton, RoomForCreamButton;
-        private Drink drink;
         public DrinkSelection()
         {
             InitializeComponent();
             InitializeButtons();
         }
-        public DrinkSelection(Drink drink)
-        {
-            this.drink = drink;
-            InitializeComponent();
-            InitializeButtons();
-        }
+
 
         // Initializes specialty buttons and their settings
         private void InitializeButtons()
