@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using DinoDiner.Menu;
+using PointOfSale.EntreeCustomizationPages;
 
 namespace PointOfSale
 {
@@ -29,7 +30,7 @@ namespace PointOfSale
             {
                 order.Add(new Brontowurst());
                 CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
-                NavigationService.Navigate(new MenuCategorySelection());
+                NavigationService.Navigate(new BrontowurstCustomization());
             }
         }
 
@@ -44,7 +45,7 @@ namespace PointOfSale
             {
                 order.Add(new DinoNuggets());
                 CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
-                NavigationService.Navigate(new MenuCategorySelection());
+                NavigationService.Navigate(new DinoNuggetsCustomization());
             }
         }
 
@@ -59,7 +60,7 @@ namespace PointOfSale
             {
                 order.Add(new PrehistoricPBJ());
                 CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
-                NavigationService.Navigate(new MenuCategorySelection());
+                NavigationService.Navigate(new PrehistoricPBJCustomization());
             }
         }
 
@@ -89,7 +90,7 @@ namespace PointOfSale
             {
                 order.Add(new SteakosaurusBurger());
                 CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
-                NavigationService.Navigate(new MenuCategorySelection());
+                NavigationService.Navigate(new SteakosaurusBurgerCustomization());
             }
         }
 
@@ -104,7 +105,7 @@ namespace PointOfSale
             {
                 order.Add(new TRexKingBurger());
                 CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
-                NavigationService.Navigate(new MenuCategorySelection());
+                NavigationService.Navigate(new TRexKingBurgerCustomization());
             }
         }
 
@@ -119,7 +120,7 @@ namespace PointOfSale
             {
                 order.Add(new VelociWrap());
                 CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
-                NavigationService.Navigate(new MenuCategorySelection());
+                NavigationService.Navigate(new VelociWrapCustomization());
             }
         }
     }

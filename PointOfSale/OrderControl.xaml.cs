@@ -1,4 +1,5 @@
 ﻿using DinoDiner.Menu;
+using PointOfSale.EntreeCustomizationPages;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -41,6 +42,30 @@ namespace PointOfSale
                 else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Drink drink)
                 {
                     NavigationService.Navigate(new DrinkSelection(drink));
+                }
+                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Brontowurst b)
+                {
+                    NavigationService.Navigate(new BrontowurstCustomization());
+                }
+                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is DinoNuggets dn)
+                {
+                    NavigationService.Navigate(new DinoNuggetsCustomization());
+                }
+                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is PrehistoricPBJ pbj)
+                {
+                    NavigationService.Navigate(new PrehistoricPBJCustomization());
+                }
+                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is SteakosaurusBurger sb)
+                {
+                    NavigationService.Navigate(new SteakosaurusBurgerCustomization());
+                }
+                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is TRexKingBurger trex)
+                {
+                    NavigationService.Navigate(new TRexKingBurgerCustomization());
+                }
+                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is VelociWrap vw)
+                {
+                    NavigationService.Navigate(new VelociWrapCustomization());
                 }
             }
         }

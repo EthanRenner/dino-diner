@@ -58,6 +58,24 @@
     <Compile Include="CustomizeComboSelection.xaml.cs">
       <DependentUpon>CustomizeComboSelection.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EntreeCustomizationPages\BrontowurstCustomization.xaml.cs">
+      <DependentUpon>BrontowurstCustomization.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EntreeCustomizationPages\DinoNuggetsCustomization.xaml.cs">
+      <DependentUpon>DinoNuggetsCustomization.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EntreeCustomizationPages\PrehistoricPBJCustomization.xaml.cs">
+      <DependentUpon>PrehistoricPBJCustomization.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EntreeCustomizationPages\SteakosaurusBurgerCustomization.xaml.cs">
+      <DependentUpon>SteakosaurusBurgerCustomization.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EntreeCustomizationPages\TRexKingBurgerCustomization.xaml.cs">
+      <DependentUpon>TRexKingBurgerCustomization.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EntreeCustomizationPages\VelociWrapCustomization.xaml.cs">
+      <DependentUpon>VelociWrapCustomization.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FlavorSelection.xaml.cs">
       <DependentUpon>FlavorSelection.xaml</DependentUpon>
     </Compile>
@@ -76,6 +94,30 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DrinkSelection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EntreeCustomizationPages\BrontowurstCustomization.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EntreeCustomizationPages\DinoNuggetsCustomization.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EntreeCustomizationPages\PrehistoricPBJCustomization.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EntreeCustomizationPages\SteakosaurusBurgerCustomization.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EntreeCustomizationPages\TRexKingBurgerCustomization.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EntreeCustomizationPages\VelociWrapCustomization.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

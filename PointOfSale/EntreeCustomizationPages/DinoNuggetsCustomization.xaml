@@ -1,0 +1,42 @@
+﻿<Page x:Class="PointOfSale.EntreeCustomizationPages.DinoNuggetsCustomization"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PointOfSale.EntreeCustomizationPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="600"
+      Title="DinoNuggetsCustomization">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <Style TargetType="Button">
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            </Style>
+        </Grid.Resources>
+        <TextBlock Text="Customize Dino Nuggets" FontSize="20" Grid.ColumnSpan="2" TextAlignment="Center" VerticalAlignment="Center"/>
+        <Button Name="AddNuggetsButton"
+                Click="OnAddNuggetsClick"
+                Grid.Row="1"
+                Grid.Column="0">
+            Add Nuggets
+        </Button>
+        <Button Name="ReturnButton"
+                Click="OnReturnClick"
+                Grid.Row="2"
+                Grid.Column="1">
+            Done Customizing
+        </Button>
+    </Grid>
+</Page>
