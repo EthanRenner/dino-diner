@@ -41,6 +41,7 @@ namespace DinoDiner.Menu
             {
                 side = value;
                 NotifyOfPropertyChanged("Side");
+                NotifyOfPropertyChanged("Special");
             }
         }
 
@@ -54,6 +55,7 @@ namespace DinoDiner.Menu
             {
                 drink = value;
                 NotifyOfPropertyChanged("Drink");
+                NotifyOfPropertyChanged("Special");
             }
         }
 

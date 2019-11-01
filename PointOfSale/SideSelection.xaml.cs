@@ -14,6 +14,7 @@ namespace PointOfSale
     public partial class SideSelection : Page
     {
         private Side side;
+        private CretaceousCombo cc;
         public SideSelection()
         {
             InitializeComponent();
@@ -25,106 +26,163 @@ namespace PointOfSale
             InitializeComponent();
             EnableSizeButtons();
             DisableSideButtons();
+            this.side = side;
+        }
+        public SideSelection(CretaceousCombo cc)
+        {
+            InitializeComponent();
+            EnableSideButtons();
+            DisableSizeButtons();
+            this.cc = cc;
+            this.side = cc.Side;
         }
 
-        public void OnFryceritopsClick(object sender, RoutedEventArgs args)
+        private void OnFryceritopsClick(object sender, RoutedEventArgs args)
         {
             if (DataContext is Order order)
             {
-                order.Add(new Fryceritops());
-                CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                side = new Fryceritops();
+                if (cc == null)
+                {
+                    order.Add(side);
+                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                }
+                else
+                {
+                    cc.Side = side;
+                }
                 EnableSizeButtons();
                 DisableSideButtons();
             }
         }
-        public void OnMeteorMacAndCheeseClick(object sender, RoutedEventArgs args)
+        private void OnMeteorMacAndCheeseClick(object sender, RoutedEventArgs args)
         {
             if (DataContext is Order order)
             {
                 side = new MeteorMacAndCheese();
-                order.Add(side);
+                if (cc == null)
+                {
+                    order.Add(side);
+                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                }
+                else
+                {
+                    cc.Side = side;
+                }
                 CollectionViewSource.GetDefaultView(order.Items).MoveCurrentTo(side);
                 EnableSizeButtons();
                 DisableSideButtons();
             }
         }
-        public void OnMezzorellaSticksClick(object sender, RoutedEventArgs args)
+        private void OnMezzorellaSticksClick(object sender, RoutedEventArgs args)
         {
             if (DataContext is Order order)
             {
-                order.Add(new MezzorellaSticks());
+                side = new MezzorellaSticks();
+                if (cc == null)
+                {
+                    order.Add(side);
+                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                }
+                else
+                {
+                    cc.Side = side;
+                }
                 CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
                 EnableSizeButtons();
                 DisableSideButtons();
             }
         }
-        public void OnTriceritotsClick(object sender, RoutedEventArgs args)
+        private void OnTriceritotsClick(object sender, RoutedEventArgs args)
         {
             if (DataContext is Order order)
             {
-                order.Add(new Triceritots());
+                side = new Triceritots();
+                if (cc == null)
+                {
+                    order.Add(side);
+                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                }
+                else
+                {
+                    cc.Side = side;
+                }
                 CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
                 EnableSizeButtons();
                 DisableSideButtons();
             }
         }
 
-        public void MakeSmall(object sender, RoutedEventArgs args)
+        private void MakeSmall(object sender, RoutedEventArgs args)
         {
-            if (DataContext is Order order)
+            if (side != null)
             {
-                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Side side)
-                {
-                    side.Size = DinoDiner.Menu.Size.Small;
-                    NavigationService.Navigate(new MenuCategorySelection());
-                    
-                }
+                side.Size = DinoDiner.Menu.Size.Small;
+            }
+            if (cc != null)
+            {
+                cc.Side = side;
+                NavigationService.Navigate(new CustomizeComboSelection(cc));
+            }
+            else
+            {
+                NavigationService.Navigate(new MenuCategorySelection());
             }
         }
-        public void MakeMedium(object sender, RoutedEventArgs args)
+        private void MakeMedium(object sender, RoutedEventArgs args)
         {
-            if (DataContext is Order order)
+            if (side != null)
             {
-                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Side side)
-                {
-                    side.Size = DinoDiner.Menu.Size.Medium;
-                    NavigationService.Navigate(new MenuCategorySelection());
-                }
+                side.Size = DinoDiner.Menu.Size.Medium;
+            }
+            if (cc != null)
+            {
+                cc.Side = side;
+                NavigationService.Navigate(new CustomizeComboSelection(cc));
+            }
+            else
+            {
+                NavigationService.Navigate(new MenuCategorySelection());
             }
         }
-        public void MakeLarge(object sender, RoutedEventArgs args)
+        private void MakeLarge(object sender, RoutedEventArgs args)
         {
-            if (DataContext is Order order)
+            if (side != null)
             {
-                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Side side)
-                {
-                    side.Size = DinoDiner.Menu.Size.Large;
-                    NavigationService.Navigate(new MenuCategorySelection());
-                }
+                side.Size = DinoDiner.Menu.Size.Large;
+            }
+            if (cc != null)
+            {
+                cc.Side = side;
+                NavigationService.Navigate(new CustomizeComboSelection(cc));
+            }
+            else
+            {
+                NavigationService.Navigate(new MenuCategorySelection());
             }
         }
 
-        public void EnableSideButtons()
+        private void EnableSideButtons()
         {
             FryceritopsButton.IsEnabled = true;
             MeteorMacAndCheeseButton.IsEnabled = true;
             MezzorellaSticksButton.IsEnabled = true;
             TriceritotsButton.IsEnabled = true;
         }
-        public void DisableSideButtons()
+        private void DisableSideButtons()
         {
             FryceritopsButton.IsEnabled = false;
             MeteorMacAndCheeseButton.IsEnabled = false;
             MezzorellaSticksButton.IsEnabled = false;
             TriceritotsButton.IsEnabled = false;
         }
-        public void EnableSizeButtons()
+        private void EnableSizeButtons()
         {
             SmallButton.IsEnabled = true;
             MediumButton.IsEnabled = true;
             LargeButton.IsEnabled = true;
         }
-        public void DisableSizeButtons()
+        private void DisableSizeButtons()
         {
             SmallButton.IsEnabled = false;
             MediumButton.IsEnabled = false;

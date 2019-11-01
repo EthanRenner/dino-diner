@@ -65,9 +65,9 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button Content="Small" Grid.Column="0"/>
-                <Button Content="Medium" Grid.Column="1"/>
-                <Button Content="Large" Grid.Column="2"/>
+                <Button Click="MakeSmall" Content="Small" Grid.Column="0"/>
+                <Button Click="MakeMedium" Content="Medium" Grid.Column="1"/>
+                <Button Click="MakeLarge" Content="Large" Grid.Column="2"/>
             </Grid>
         </Grid>
     </ScrollViewer>

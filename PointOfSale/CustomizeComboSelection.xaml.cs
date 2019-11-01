@@ -14,9 +14,11 @@ namespace PointOfSale
     /// </summary>
     public partial class CustomizeComboSelection : Page
     {
-        public CustomizeComboSelection()
+        private CretaceousCombo cc;
+        public CustomizeComboSelection(CretaceousCombo cc)
         {
             InitializeComponent();
+            this.cc = cc;
         }
 
         /// <summary>
@@ -36,37 +38,37 @@ namespace PointOfSale
         /// <param name="args">Unused arguments about event.</param>
         public void NavToSides(object sender, RoutedEventArgs args)
         {
-            NavigationService.Navigate(new SideSelection());
+            NavigationService.Navigate(new SideSelection(cc));
         }
 
         // Size methods
-        public void MakeSmall(object sender, RoutedEventArgs args)
+        private void MakeSmall(object sender, RoutedEventArgs args)
         {
             if (DataContext is Order order)
             {
-                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is CretaceousCombo combo)
+                if (cc != null)
                 {
-                    combo.Size = DinoDiner.Menu.Size.Small;
+                    cc.Size = DinoDiner.Menu.Size.Small;
                 }
             }
         }
-        public void MakeMedium(object sender, RoutedEventArgs args)
+        private void MakeMedium(object sender, RoutedEventArgs args)
         {
             if (DataContext is Order order)
             {
-                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is CretaceousCombo combo)
+                if (cc != null)
                 {
-                    combo.Size = DinoDiner.Menu.Size.Medium;
+                    cc.Size = DinoDiner.Menu.Size.Medium;
                 }
             }
         }
-        public void MakeLarge(object sender, RoutedEventArgs args)
+        private void MakeLarge(object sender, RoutedEventArgs args)
         {
             if (DataContext is Order order)
             {
-                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is CretaceousCombo combo)
+                if (cc != null)
                 {
-                    combo.Size = DinoDiner.Menu.Size.Large;
+                    cc.Size = DinoDiner.Menu.Size.Large;
                 }
             }
         }
