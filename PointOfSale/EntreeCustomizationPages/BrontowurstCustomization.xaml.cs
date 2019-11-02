@@ -1,4 +1,7 @@
-﻿using DinoDiner.Menu;
+﻿/* BrontowurstCustomization.xaml.cs
+ * Author: Ethan Renner
+ */
+using DinoDiner.Menu;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,13 +24,24 @@ namespace PointOfSale.EntreeCustomizationPages
     /// </summary>
     public partial class BrontowurstCustomization : Page
     {
+        private CretaceousCombo cc;
+        private Brontowurst b;
         public BrontowurstCustomization()
         {
             InitializeComponent();
+            if (DataContext is Order order)
+            {
+                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Brontowurst brontowurst)
+                {
+                    b = brontowurst;
+                }
+            }
         }
-        public BrontowurstCustomization(Brontowurst b)
+        public BrontowurstCustomization(CretaceousCombo cc)
         {
             InitializeComponent();
+            this.cc = cc;
+            this.b = cc.Entree as Brontowurst;
         }
         private void OnPeppersClick(object sender, RoutedEventArgs arsg)
         {
@@ -37,6 +51,11 @@ namespace PointOfSale.EntreeCustomizationPages
                 {
                     brontowurst.HoldPeppers();
                 }
+            }
+            if (cc != null)
+            {
+                b.HoldPeppers();
+                cc.Entree = b;
             }
         }
         private void OnBunClick(object sender, RoutedEventArgs arsg)
@@ -48,6 +67,11 @@ namespace PointOfSale.EntreeCustomizationPages
                     brontowurst.HoldBun();
                 }
             }
+            if (cc != null)
+            {
+                b.HoldBun();
+                cc.Entree = b;
+            }
         }
         private void OnOnionsClick(object sender, RoutedEventArgs arsg)
         {
@@ -58,10 +82,18 @@ namespace PointOfSale.EntreeCustomizationPages
                     brontowurst.HoldOnion();
                 }
             }
+            if (cc != null)
+            {
+                b.HoldOnion();
+                cc.Entree = b;
+            }
         }
         public void OnReturnClick(object sender, RoutedEventArgs args)
         {
-            NavigationService.Navigate(new MenuCategorySelection());
+            if (cc != null)
+                NavigationService.Navigate(new CustomizeComboSelection(cc));
+            else
+                NavigationService.Navigate(new MenuCategorySelection());
         }
     }
 }

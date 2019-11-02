@@ -1,4 +1,7 @@
-﻿using DinoDiner.Menu;
+﻿/* DinoNuggetsCustomization.xaml.cs
+ * Author: Ethan Renner
+ */
+using DinoDiner.Menu;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,13 +24,24 @@ namespace PointOfSale.EntreeCustomizationPages
     /// </summary>
     public partial class DinoNuggetsCustomization : Page
     {
+        private DinoNuggets dn;
+        private CretaceousCombo cc;
         public DinoNuggetsCustomization()
         {
             InitializeComponent();
+            if (DataContext is Order order)
+            {
+                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is DinoNuggets dinonuggets)
+                {
+                    dn = dinonuggets;
+                }
+            }
         }
-        public DinoNuggetsCustomization(DinoNuggets dn)
+        public DinoNuggetsCustomization(CretaceousCombo cc)
         {
             InitializeComponent();
+            this.cc = cc;
+            this.dn = cc.Entree as DinoNuggets;
         }
         private void OnAddNuggetsClick(object sender, RoutedEventArgs arsg)
         {
@@ -38,10 +52,18 @@ namespace PointOfSale.EntreeCustomizationPages
                     dinonuggets.AddNugget();
                 }
             }
+            if (cc != null)
+            {
+                dn.AddNugget();
+                cc.Entree = dn;
+            }
         }
         public void OnReturnClick(object sender, RoutedEventArgs args)
         {
-            NavigationService.Navigate(new MenuCategorySelection());
+            if (cc != null)
+                NavigationService.Navigate(new CustomizeComboSelection(cc));
+            else
+                NavigationService.Navigate(new MenuCategorySelection());
         }
     }
 }

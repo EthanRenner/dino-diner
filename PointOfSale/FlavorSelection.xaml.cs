@@ -13,85 +13,62 @@ namespace PointOfSale
     /// </summary>
     public partial class FlavorSelection : Page
     {
+        private CretaceousCombo cc;
+        private Sodasaurus soda;
         public FlavorSelection()
         {
             InitializeComponent();
         }
+        public FlavorSelection(CretaceousCombo cc)
+        {
+            InitializeComponent();
+            this.cc = cc;
+            this.soda = cc.Drink as Sodasaurus;
+        }
 
         public void OnCherryClick(object sender, RoutedEventArgs args)
         {
-            if (DataContext is Order order)
-            {
-                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Sodasaurus sodasaurus)
-                {
-                    sodasaurus.Flavor = SodasaurusFlavor.Cherry;
-                    NavigationService.Navigate(new MenuCategorySelection());
-                }
-            }
+            ClickGeneralized(SodasaurusFlavor.Cherry);
         }
         public void OnChocolateClick(object sender, RoutedEventArgs args)
         {
-            if (DataContext is Order order)
-            {
-                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Sodasaurus sodasaurus)
-                {
-                    sodasaurus.Flavor = SodasaurusFlavor.Chocolate;
-                    NavigationService.Navigate(new MenuCategorySelection());
-                }
-            }
+            ClickGeneralized(SodasaurusFlavor.Chocolate);
         }
         public void OnColaClick(object sender, RoutedEventArgs args)
         {
-            if (DataContext is Order order)
-            {
-                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Sodasaurus sodasaurus)
-                {
-                    sodasaurus.Flavor = SodasaurusFlavor.Cola;
-                    NavigationService.Navigate(new MenuCategorySelection());
-                }
-            }
+            ClickGeneralized(SodasaurusFlavor.Cola);
         }
         public void OnLimeClick(object sender, RoutedEventArgs args)
         {
-            if (DataContext is Order order)
-            {
-                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Sodasaurus sodasaurus)
-                {
-                    sodasaurus.Flavor = SodasaurusFlavor.Lime;
-                    NavigationService.Navigate(new MenuCategorySelection());
-                }
-            }
+            ClickGeneralized(SodasaurusFlavor.Lime);
         }
         public void OnOrangeClick(object sender, RoutedEventArgs args)
         {
-            if (DataContext is Order order)
-            {
-                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Sodasaurus sodasaurus)
-                {
-                    sodasaurus.Flavor = SodasaurusFlavor.Orange;
-                    NavigationService.Navigate(new MenuCategorySelection());
-                }
-            }
+            ClickGeneralized(SodasaurusFlavor.Orange);
         }
         public void OnRootBeerClick(object sender, RoutedEventArgs args)
         {
-            if (DataContext is Order order)
-            {
-                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Sodasaurus sodasaurus)
-                {
-                    sodasaurus.Flavor = SodasaurusFlavor.RootBeer;
-                    NavigationService.Navigate(new MenuCategorySelection());
-                }
-            }
+            ClickGeneralized(SodasaurusFlavor.RootBeer);
         }
         public void OnVanillaClick(object sender, RoutedEventArgs args)
         {
-            if (DataContext is Order order)
+            ClickGeneralized(SodasaurusFlavor.Vanilla);
+        }
+
+        private void ClickGeneralized(SodasaurusFlavor flavor)
+        {
+            if (cc != null)
+            {
+                soda.Flavor = flavor;
+                cc.Drink = soda;
+                NavigationService.Navigate(new DrinkSelection(cc, cc.Drink));
+            }
+            else if (DataContext is Order order)
             {
                 if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Sodasaurus sodasaurus)
                 {
-                    sodasaurus.Flavor = SodasaurusFlavor.Vanilla;
-                    NavigationService.Navigate(new MenuCategorySelection());
+                    sodasaurus.Flavor = flavor;
+                    NavigationService.Navigate(new DrinkSelection(sodasaurus));
                 }
             }
         }

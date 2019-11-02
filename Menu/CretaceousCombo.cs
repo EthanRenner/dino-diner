@@ -28,6 +28,7 @@ namespace DinoDiner.Menu
                 entree = value;
                 NotifyOfPropertyChanged("Entree");
                 NotifyOfPropertyChanged("Description");
+                NotifyOfPropertyChanged("Special");
             }
         }
 

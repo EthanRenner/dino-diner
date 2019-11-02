@@ -1,4 +1,7 @@
-﻿using DinoDiner.Menu;
+﻿/* TRexKingBurgerCustomization.xaml.cs
+ * Author: Ethan Renner
+ */
+using DinoDiner.Menu;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,13 +24,24 @@ namespace PointOfSale.EntreeCustomizationPages
     /// </summary>
     public partial class TRexKingBurgerCustomization : Page
     {
+        private TRexKingBurger trex;
+        private CretaceousCombo cc;
         public TRexKingBurgerCustomization()
         {
             InitializeComponent();
+            if (DataContext is Order order)
+            {
+                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is TRexKingBurger trexkingburger)
+                {
+                    trex = trexkingburger;
+                }
+            }
         }
-        public TRexKingBurgerCustomization(TRexKingBurger trex)
+        public TRexKingBurgerCustomization(CretaceousCombo cc)
         {
             InitializeComponent();
+            this.cc = cc;
+            this.trex = cc.Entree as TRexKingBurger;
         }
         private void OnKetchupClick(object sender, RoutedEventArgs arsg)
         {
@@ -37,6 +51,11 @@ namespace PointOfSale.EntreeCustomizationPages
                 {
                     trexkingburger.HoldKetchup();
                 }
+            }
+            if (cc != null)
+            {
+                trex.HoldKetchup();
+                cc.Entree = trex;
             }
         }
         private void OnMustardClick(object sender, RoutedEventArgs arsg)
@@ -48,6 +67,11 @@ namespace PointOfSale.EntreeCustomizationPages
                     trexkingburger.HoldMustard();
                 }
             }
+            if (cc != null)
+            {
+                trex.HoldMustard();
+                cc.Entree = trex;
+            }
         }
         private void OnPickleClick(object sender, RoutedEventArgs arsg)
         {
@@ -57,6 +81,11 @@ namespace PointOfSale.EntreeCustomizationPages
                 {
                     trexkingburger.HoldPickle();
                 }
+            }
+            if (cc != null)
+            {
+                trex.HoldPickle();
+                cc.Entree = trex;
             }
         }
         private void OnBunClick(object sender, RoutedEventArgs arsg)
@@ -68,6 +97,11 @@ namespace PointOfSale.EntreeCustomizationPages
                     trexkingburger.HoldBun();
                 }
             }
+            if (cc != null)
+            {
+                trex.HoldBun();
+                cc.Entree = trex;
+            }
         }
         private void OnOnionClick(object sender, RoutedEventArgs arsg)
         {
@@ -77,6 +111,11 @@ namespace PointOfSale.EntreeCustomizationPages
                 {
                     trexkingburger.HoldOnion();
                 }
+            }
+            if (cc != null)
+            {
+                trex.HoldOnion();
+                cc.Entree = trex;
             }
         }
         private void OnMayoClick(object sender, RoutedEventArgs arsg)
@@ -88,6 +127,11 @@ namespace PointOfSale.EntreeCustomizationPages
                     trexkingburger.HoldMayo();
                 }
             }
+            if (cc != null)
+            {
+                trex.HoldMayo();
+                cc.Entree = trex;
+            }
         }
         private void OnLettuceClick(object sender, RoutedEventArgs arsg)
         {
@@ -97,6 +141,11 @@ namespace PointOfSale.EntreeCustomizationPages
                 {
                     trexkingburger.HoldLettuce();
                 }
+            }
+            if (cc != null)
+            {
+                trex.HoldLettuce();
+                cc.Entree = trex;
             }
         }
         private void OnTomatoClick(object sender, RoutedEventArgs arsg)
@@ -108,10 +157,18 @@ namespace PointOfSale.EntreeCustomizationPages
                     trexkingburger.HoldTomato();
                 }
             }
+            if (cc != null)
+            {
+                trex.HoldTomato();
+                cc.Entree = trex;
+            }
         }
         public void OnReturnClick(object sender, RoutedEventArgs args)
         {
-            NavigationService.Navigate(new MenuCategorySelection());
+            if (cc != null)
+                NavigationService.Navigate(new CustomizeComboSelection(cc));
+            else
+                NavigationService.Navigate(new MenuCategorySelection());
         }
     }
 }

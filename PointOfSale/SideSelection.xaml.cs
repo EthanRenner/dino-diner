@@ -34,7 +34,6 @@ namespace PointOfSale
             EnableSideButtons();
             DisableSizeButtons();
             this.cc = cc;
-            this.side = cc.Side;
         }
 
         private void OnFryceritopsClick(object sender, RoutedEventArgs args)
@@ -69,7 +68,6 @@ namespace PointOfSale
                 {
                     cc.Side = side;
                 }
-                CollectionViewSource.GetDefaultView(order.Items).MoveCurrentTo(side);
                 EnableSizeButtons();
                 DisableSideButtons();
             }
@@ -88,7 +86,6 @@ namespace PointOfSale
                 {
                     cc.Side = side;
                 }
-                CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
                 EnableSizeButtons();
                 DisableSideButtons();
             }
@@ -107,7 +104,6 @@ namespace PointOfSale
                 {
                     cc.Side = side;
                 }
-                CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
                 EnableSizeButtons();
                 DisableSideButtons();
             }

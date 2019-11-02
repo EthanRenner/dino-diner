@@ -1,4 +1,7 @@
-﻿using DinoDiner.Menu;
+﻿/* PrehistoricPBJCustomization.xaml.cs
+ * Author: Ethan Renner
+ */
+using DinoDiner.Menu;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +24,24 @@ namespace PointOfSale.EntreeCustomizationPages
     /// </summary>
     public partial class PrehistoricPBJCustomization : Page
     {
+        private PrehistoricPBJ pbj;
+        private CretaceousCombo cc;
         public PrehistoricPBJCustomization()
         {
             InitializeComponent();
+            if (DataContext is Order order)
+            {
+                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is PrehistoricPBJ pbj)
+                {
+                    this.pbj = pbj;
+                }
+            }
+        }
+        public PrehistoricPBJCustomization(CretaceousCombo cc)
+        {
+            InitializeComponent();
+            this.cc = cc;
+            this.pbj = cc.Entree as PrehistoricPBJ;
         }
         private void OnJellyClick(object sender, RoutedEventArgs arsg)
         {
@@ -33,6 +51,11 @@ namespace PointOfSale.EntreeCustomizationPages
                 {
                     pbj.HoldJelly();
                 }
+            }
+            if (cc != null)
+            {
+                pbj.HoldJelly();
+                cc.Entree = pbj;
             }
         }
         private void OnPBClick(object sender, RoutedEventArgs arsg)
@@ -44,10 +67,18 @@ namespace PointOfSale.EntreeCustomizationPages
                     pbj.HoldPeanutButter();
                 }
             }
+            if (cc != null)
+            {
+                pbj.HoldPeanutButter();
+                cc.Entree = pbj;
+            }
         }
         public void OnReturnClick(object sender, RoutedEventArgs args)
         {
-            NavigationService.Navigate(new MenuCategorySelection());
+            if (cc != null)
+                NavigationService.Navigate(new CustomizeComboSelection(cc));
+            else
+                NavigationService.Navigate(new MenuCategorySelection());
         }
     }
 }

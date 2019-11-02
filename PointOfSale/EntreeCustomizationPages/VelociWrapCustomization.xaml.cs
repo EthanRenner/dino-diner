@@ -1,4 +1,7 @@
-﻿using DinoDiner.Menu;
+﻿/* VelociWrapCustomization.xaml.cs
+ * Author: Ethan Renner
+ */
+using DinoDiner.Menu;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +24,25 @@ namespace PointOfSale.EntreeCustomizationPages
     /// </summary>
     public partial class VelociWrapCustomization : Page
     {
+        private VelociWrap vw;
+        private CretaceousCombo cc;
         public VelociWrapCustomization()
         {
             InitializeComponent();
+
+            if (DataContext is Order order)
+            {
+                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is VelociWrap velociwrap)
+                {
+                    vw = velociwrap;
+                }
+            }
+        }
+        public VelociWrapCustomization(CretaceousCombo cc)
+        {
+            InitializeComponent();
+            this.cc = cc;
+            this.vw = cc.Entree as VelociWrap;
         }
         private void OnLettuceClick(object sender, RoutedEventArgs arsg)
         {
@@ -33,6 +52,11 @@ namespace PointOfSale.EntreeCustomizationPages
                 {
                     velociwrap.HoldLettuce();
                 }
+            }
+            if (cc != null)
+            {
+                vw.HoldLettuce();
+                cc.Entree = vw;
             }
         }
         private void OnCheeseClick(object sender, RoutedEventArgs arsg)
@@ -44,6 +68,11 @@ namespace PointOfSale.EntreeCustomizationPages
                     velociwrap.HoldCheese();
                 }
             }
+            if (cc != null)
+            {
+                vw.HoldCheese();
+                cc.Entree = vw;
+            }
         }
         private void OnDressingClick(object sender, RoutedEventArgs arsg)
         {
@@ -54,10 +83,18 @@ namespace PointOfSale.EntreeCustomizationPages
                     velociwrap.HoldDressing();
                 }
             }
+            if (cc != null)
+            {
+                vw.HoldDressing();
+                cc.Entree = vw;
+            }
         }
         public void OnReturnClick(object sender, RoutedEventArgs args)
         {
-            NavigationService.Navigate(new MenuCategorySelection());
+            if (cc != null)
+                NavigationService.Navigate(new CustomizeComboSelection(cc));
+            else
+                NavigationService.Navigate(new MenuCategorySelection());
         }
     }
 }

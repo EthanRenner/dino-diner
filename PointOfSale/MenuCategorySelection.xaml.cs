@@ -1,4 +1,4 @@
-﻿/* menuCategorySelection.xaml.cs
+﻿/* MenuCategorySelection.xaml.cs
  * Author: Ethan Renner
  */
 using System.Windows;

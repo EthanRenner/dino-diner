@@ -96,7 +96,7 @@
                 </Grid.RowDefinitions>
                 <TextBlock Name="uxSpecialsHeader" Grid.Row="0" FontSize="20">Special</TextBlock>
             </Grid>
-            <Button Click="OnDoneClick" Content="Done. (Return to Menu Category Selection)" Margin="0" Grid.Row="2" Grid.ColumnSpan="3"/>
+            <Button Click="OnDoneClick" Content="Done customizing." Margin="0" Grid.Row="2" Grid.ColumnSpan="3"/>
         </Grid>
     </ScrollViewer>
 </Page>

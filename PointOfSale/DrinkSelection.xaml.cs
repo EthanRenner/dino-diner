@@ -17,6 +17,7 @@ namespace PointOfSale
     {
         private Button HoldIceButton, AddIceButton, AddLemonButton, SweetButton, DecafButton, FlavorButton, RoomForCreamButton;
         private Drink drink;
+        private CretaceousCombo cc;
         public DrinkSelection()
         {
             InitializeComponent();
@@ -48,7 +49,40 @@ namespace PointOfSale
                 AddWaterButtons();
             }
         }
-        
+        public DrinkSelection(CretaceousCombo cc)
+        {
+            this.cc = cc;
+            InitializeComponent();
+            InitializeButtons();
+            EnableDrinkButtons();
+            DisableSpecialButtons();
+        }
+        public DrinkSelection(CretaceousCombo cc, Drink drink)
+        {
+            this.cc = cc;
+            this.drink = drink;
+            InitializeComponent();
+            InitializeButtons();
+            DisableDrinkButtons();
+            EnableSpecialButtons();
+            if (drink is Sodasaurus)
+            {
+                AddSodasaurusButtons();
+            }
+            else if (drink is Tyrannotea)
+            {
+                AddTyrannoteaButtons();
+            }
+            else if (drink is JurassicJava)
+            {
+                AddJurassicJavaButtons();
+            }
+            else if (drink is Water)
+            {
+                AddWaterButtons();
+            }
+        }
+
         // Initializes specialty buttons and their settings
         private void InitializeButtons()
         {
@@ -106,8 +140,16 @@ namespace PointOfSale
             if (DataContext is Order order)
             {
                 drink = new Sodasaurus();
-                order.Add(drink);
-                CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                if (cc == null)
+                {
+                    order.Add(drink);
+                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                }
+                else
+                {
+                    cc.Drink = drink;
+                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentTo(cc);
+                }
 
                 AddSodasaurusButtons();
 
@@ -129,8 +171,16 @@ namespace PointOfSale
             if (DataContext is Order order)
             {
                 drink = new Tyrannotea();
-                order.Add(drink);
-                CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                if (cc == null)
+                {
+                    order.Add(drink);
+                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                }
+                else
+                {
+                    cc.Drink = drink;
+                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentTo(cc);
+                }
 
                 AddTyrannoteaButtons();
 
@@ -153,8 +203,16 @@ namespace PointOfSale
             if (DataContext is Order order)
             {
                 drink = new JurassicJava();
-                order.Add(drink);
-                CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                if (cc == null)
+                {
+                    order.Add(drink);
+                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                }
+                else
+                {
+                    cc.Drink = drink;
+                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentTo(cc);
+                }
 
                 AddJurassicJavaButtons();
 
@@ -177,8 +235,16 @@ namespace PointOfSale
             if (DataContext is Order order)
             {
                 drink = new Water();
-                order.Add(drink);
-                CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                if (cc == null)
+                {
+                    order.Add(drink);
+                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                }
+                else
+                {
+                    cc.Drink = drink;
+                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentTo(cc);
+                }
 
                 AddWaterButtons();
 
@@ -199,22 +265,38 @@ namespace PointOfSale
         {
             if (drink != null)
                 drink.Size = DinoDiner.Menu.Size.Small;
+
+            if (cc != null)
+                cc.Drink = drink;
         }
         public void MakeMedium(object sender, RoutedEventArgs args)
         {
             if (drink != null)
                 drink.Size = DinoDiner.Menu.Size.Medium;
+
+            if (cc != null)
+                cc.Drink = drink;
         }
         public void MakeLarge(object sender, RoutedEventArgs args)
         {
             if (drink != null)
                 drink.Size = DinoDiner.Menu.Size.Large;
+
+            if (cc != null)
+                cc.Drink = drink;
         }
 
         // Done methods
         public void OnDoneClick(object sender, RoutedEventArgs args)
         {
-            NavigationService.Navigate(new MenuCategorySelection());
+            if (cc != null)
+            {
+                NavigationService.Navigate(new CustomizeComboSelection(cc));
+            }
+            else
+            {
+                NavigationService.Navigate(new MenuCategorySelection());
+            }
         }
 
         // Specials methods
@@ -222,6 +304,9 @@ namespace PointOfSale
         {
             if (drink != null)
                 drink.Ice = !drink.Ice;
+
+            if (cc != null)
+                cc.Drink = drink;
         }
         public void OnLemonClick(object sender, RoutedEventArgs args)
         {
@@ -236,6 +321,9 @@ namespace PointOfSale
                     t.Lemon = !t.Lemon;
                 }
             }
+
+            if (cc != null)
+                cc.Drink = drink;
         }
         public void OnSweetClick(object sender, RoutedEventArgs args)
         {
@@ -246,6 +334,9 @@ namespace PointOfSale
                     t.Sweet = !t.Sweet;
                 }
             }
+
+            if (cc != null)
+                cc.Drink = drink;
         }
         public void OnDecafClick(object sender, RoutedEventArgs args)
         {
@@ -256,6 +347,9 @@ namespace PointOfSale
                     jj.Decaf = !jj.Decaf;
                 }
             }
+
+            if (cc != null)
+                cc.Drink = drink;
         }
         public void OnRoomForCreamClick(object sender, RoutedEventArgs args)
         {
@@ -266,10 +360,21 @@ namespace PointOfSale
                     jj.RoomForCream = !jj.RoomForCream;
                 }
             }
+
+            if (cc != null)
+                cc.Drink = drink;
         }
         public void OnFlavorsClick(object sender, RoutedEventArgs args)
         {
-            NavigationService.Navigate(new FlavorSelection());
+
+            if (cc != null)
+            {
+                NavigationService.Navigate(new FlavorSelection(cc));
+            }
+            else
+            {
+                NavigationService.Navigate(new FlavorSelection());
+            }
         }
 
         private void EnableDrinkButtons()

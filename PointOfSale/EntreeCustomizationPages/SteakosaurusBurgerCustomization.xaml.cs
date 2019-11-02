@@ -1,4 +1,7 @@
-﻿using DinoDiner.Menu;
+﻿/* SteakosaurusBurgerCustomization.xaml.cs
+ * Author: Ethan Renner
+ */
+using DinoDiner.Menu;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +24,24 @@ namespace PointOfSale.EntreeCustomizationPages
     /// </summary>
     public partial class SteakosaurusBurgerCustomization : Page
     {
+        private SteakosaurusBurger sb;
+        private CretaceousCombo cc;
         public SteakosaurusBurgerCustomization()
         {
             InitializeComponent();
+            if (DataContext is Order order)
+            {
+                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is SteakosaurusBurger steakosaurusburger)
+                {
+                    sb = steakosaurusburger;
+                }
+            }
+        }
+        public SteakosaurusBurgerCustomization(CretaceousCombo cc)
+        {
+            InitializeComponent();
+            this.cc = cc;
+            this.sb = cc.Entree as SteakosaurusBurger;
         }
         private void OnKetchupClick(object sender, RoutedEventArgs arsg)
         {
@@ -33,6 +51,11 @@ namespace PointOfSale.EntreeCustomizationPages
                 {
                     steakosaurusburger.HoldKetchup();
                 }
+            }
+            if (cc != null)
+            {
+                sb.HoldKetchup();
+                cc.Entree = sb;
             }
         }
         private void OnMustardClick(object sender, RoutedEventArgs arsg)
@@ -44,6 +67,11 @@ namespace PointOfSale.EntreeCustomizationPages
                     steakosaurusburger.HoldMustard();
                 }
             }
+            if (cc != null)
+            {
+                sb.HoldMustard();
+                cc.Entree = sb;
+            }
         }
         private void OnPickleClick(object sender, RoutedEventArgs arsg)
         {
@@ -53,6 +81,11 @@ namespace PointOfSale.EntreeCustomizationPages
                 {
                     steakosaurusburger.HoldPickle();
                 }
+            }
+            if (cc != null)
+            {
+                sb.HoldPickle();
+                cc.Entree = sb;
             }
         }
         private void OnBunClick(object sender, RoutedEventArgs arsg)
@@ -64,10 +97,18 @@ namespace PointOfSale.EntreeCustomizationPages
                     steakosaurusburger.HoldBun();
                 }
             }
+            if (cc != null)
+            {
+                sb.HoldBun();
+                cc.Entree = sb;
+            }
         }
         public void OnReturnClick(object sender, RoutedEventArgs args)
         {
-            NavigationService.Navigate(new MenuCategorySelection());
+            if (cc != null)
+                NavigationService.Navigate(new CustomizeComboSelection(cc));
+            else
+                NavigationService.Navigate(new MenuCategorySelection());
         }
     }
 }

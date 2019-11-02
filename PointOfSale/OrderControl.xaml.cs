@@ -1,4 +1,7 @@
-﻿using DinoDiner.Menu;
+﻿/* OrderControl.xaml.cs
+ * Author: Ethan Renner
+ */
+using DinoDiner.Menu;
 using PointOfSale.EntreeCustomizationPages;
 using System.Windows;
 using System.Windows.Controls;
@@ -26,6 +29,7 @@ namespace PointOfSale
                     if (element.DataContext is IOrderItem item)
                     {
                         order.Remove(item);
+                        NavigationService.Navigate(new MenuCategorySelection());
                     }
                 }
             }
@@ -35,35 +39,40 @@ namespace PointOfSale
         {
             if (DataContext is Order order)
             {
-                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Side side)
+                IOrderItem item = CollectionViewSource.GetDefaultView(order.Items).CurrentItem as IOrderItem;
+                if (item is Side side)
                 {
                     NavigationService.Navigate(new SideSelection(side));
                 }
-                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Drink drink)
+                else if (item is Drink drink)
                 {
                     NavigationService.Navigate(new DrinkSelection(drink));
                 }
-                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Brontowurst b)
+                else if (item is CretaceousCombo cc)
+                {
+                    NavigationService.Navigate(new CustomizeComboSelection(cc));
+                }
+                else if (item is Brontowurst b)
                 {
                     NavigationService.Navigate(new BrontowurstCustomization());
                 }
-                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is DinoNuggets dn)
+                else if (item is DinoNuggets dn)
                 {
                     NavigationService.Navigate(new DinoNuggetsCustomization());
                 }
-                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is PrehistoricPBJ pbj)
+                else if (item is PrehistoricPBJ pbj)
                 {
                     NavigationService.Navigate(new PrehistoricPBJCustomization());
                 }
-                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is SteakosaurusBurger sb)
+                else if (item is SteakosaurusBurger sb)
                 {
                     NavigationService.Navigate(new SteakosaurusBurgerCustomization());
                 }
-                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is TRexKingBurger trex)
+                else if (item is TRexKingBurger trex)
                 {
                     NavigationService.Navigate(new TRexKingBurgerCustomization());
                 }
-                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is VelociWrap vw)
+                else if (item is VelociWrap vw)
                 {
                     NavigationService.Navigate(new VelociWrapCustomization());
                 }
