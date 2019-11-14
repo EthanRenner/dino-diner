@@ -1,15 +1,18 @@
-﻿// Index.cshtml.cs
-// Author: Ethan Rennerusing System;
+﻿// Menu.cshtml.cs
+// Author: Ethan Renner
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using DinoDiner.Menu;
 
 namespace Website.Pages
 {
-    public class IndexModel : PageModel
+    public class MenuModel : PageModel
     {
+        public Menu Menu { get; } = new Menu();
         public void OnGet()
         {
 

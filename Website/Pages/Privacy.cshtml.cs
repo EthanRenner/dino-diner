@@ -1,4 +1,4 @@
-﻿// Index.cshtml.cs
+﻿// Privacy.cshtml.cs
 // Author: Ethan Rennerusing System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Website.Pages
 {
-    public class IndexModel : PageModel
+    public class PrivacyModel : PageModel
     {
         public void OnGet()
         {
