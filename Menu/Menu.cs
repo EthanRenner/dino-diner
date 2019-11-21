@@ -107,5 +107,21 @@ namespace DinoDiner.Menu
             }
             return sb.ToString();
         }
+
+        public HashSet<string> PossibleIngredients
+        {
+            get
+            {
+                HashSet<string> possibleIngredients = new HashSet<string>();
+                foreach(IMenuItem item in AvailableMenuItems)
+                {
+                    foreach(string ingredient in item.Ingredients)
+                    {
+                        possibleIngredients.Add(ingredient);
+                    }
+                }
+                return possibleIngredients;
+            }
+        }
     }
 }

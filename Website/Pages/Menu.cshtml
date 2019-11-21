@@ -4,61 +4,98 @@
 @{
     ViewData["Title"] = "Menu";
 }
-
 <h1>Menu</h1>
-<h2>Combos</h2>
-@foreach (CretaceousCombo cc in Model.Menu.AvailableCombos)
-{
-    <div class="menu-item">
-        <div><B>@($"{cc.Description}")</B>@($": ${cc.Price}, {cc.Calories} cal")</div>
-        <div>
-            @foreach (string ingredient in cc.Ingredients)
-            {
-                <div class="ingredient">@("     " + ingredient)</div>
-            }
-        </div>
+<div class="myContainer" >
+    <div class="results">
+        <h2>Combos</h2>
+        @foreach (CretaceousCombo cc in Model.Menu.AvailableCombos)
+        {
+            <div class="menu-item" data-category="Combo" data-description="@($"{cc.Description} with {cc.Side.Description} and {cc.Drink.Description}")" data-price="@cc.Price">
+                <div><B>@($"{cc.Description} with {cc.Side.Description} and {cc.Drink.Description}")</B>@($": ${cc.Price}, {cc.Calories} cal")</div>
+                <div>
+                    @foreach (string ingredient in cc.Ingredients)
+                    {
+                        <div class="ingredient" data-ingredient="@ingredient">@(ingredient)</div>
+                    }
+                </div>
+            </div>
+        }
+        <h2>Entrees</h2>
+        @foreach (Entree e in Model.Menu.AvailableEntrees)
+        {
+            <div class="menu-item" data-category="Entree" data-description="@($"{e.Description}")" data-price="@e.Price">
+                <div><B>@($"{e.Description}")</B>@($": ${e.Price}, {e.Calories} cal")</div>
+                <div>
+                    @foreach (string ingredient in e.Ingredients)
+                    {
+                        <div class="ingredient" data-ingredient="@ingredient">@(ingredient)</div>
+                    }
+                </div>
+            </div>
+        }
+        <h2>Sides</h2>
+        @foreach (Side s in Model.Menu.AvailableSides)
+        {
+            <div class="menu-item" data-category="Side" data-description="@($"{s.Description}")" data-price="@s.Price">
+                <div><B>@($"{s.Description}")</B>@($": ${s.Price}, {s.Calories} cal")</div>
+                <div>
+                    @foreach (string ingredient in s.Ingredients)
+                    {
+                        <div class="ingredient" data-ingredient="@ingredient">@(ingredient)</div>
+                    }
+                </div>
+            </div>
+        }
+        <h2>Drinks</h2>
+        @foreach (Drink d in Model.Menu.AvailableDrinks)
+        {
+            <div class="menu-item" data-category="Drink" data-description="@($"{d.Description}")" data-price="@d.Price">
+                <div><B>@($"{d.Description}")</B>@($": ${d.Price}, {d.Calories} cal")</div>
+                <div>
+                    @foreach (string ingredient in d.Ingredients)
+                    {
+                        <div class="ingredient" data-ingredient="@ingredient">@(ingredient)</div>
+                    }
+                </div>
+            </div>
+        }
     </div>
-}
-<h2>Entrees</h2>
-@foreach (Entree e in Model.Menu.AvailableEntrees)
-{
-    <div class="menu-item">
-        <div><B>@($"{e.Description}")</B>@($": ${e.Price}, {e.Calories} cal")</div>
-        <div>
-            @foreach (string ingredient in e.Ingredients)
-            {
-                <div class="ingredient">@("     " + ingredient)</div>
-            }
-        </div>
-    </div>
-}
-<h2>Sides</h2>
-@foreach (Side s in Model.Menu.AvailableSides)
-{
-    <div class="menu-item">
-        <div><B>@($"{s.Description}")</B>@($": ${s.Price}, {s.Calories} cal")</div>
-        <div>
-            @foreach (string ingredient in s.Ingredients)
-            {
-                <div class="ingredient">@("     " + ingredient)</div>
-            }
-        </div>
-    </div>
-}
-<h2>Drinks</h2>
-@foreach (Drink d in Model.Menu.AvailableDrinks)
-{
-    <div class="menu-item">
-        <div><B>@($"{d.Description}")</B>@($": ${d.Price}, {d.Calories} cal")</div>
-        <div>
-            @foreach (string ingredient in d.Ingredients)
-            {
-                <div class="ingredient">@("     " + ingredient)</div>
-            }
-        </div>
-    </div>
-}
-
+    <form method="post" id="search-and-filter-form">
+        <input type="submit" value="Search and Filter" name="search-filter" id="search-filter" />
+        <input type="text" name="search" id="search" value="@Model.search" />
+        <label>
+            <input type="checkbox" class="menu-category" name="menuCategory" value="Combo" checked="@Model.menuCategory.Contains("Combo")" />
+            Combo
+        </label>
+        <label>
+            <input type="checkbox" class="menu-category" name="menuCategory" value="Entree" checked="@Model.menuCategory.Contains("Entree")" />
+            Entree
+        </label>
+        <label>
+            <input type="checkbox" class="menu-category" name="menuCategory" value="Side" checked="@Model.menuCategory.Contains("Side")" />
+            Side
+        </label>
+        <label>
+            <input type="checkbox" class="menu-category" name="menuCategory" value="Drink" checked="@Model.menuCategory.Contains("Drink")" />
+            Drink
+        </label>
+        <label>
+            Minimum Price:
+            <input type="number" min="0" step=".01" name="minimumPrice" id="minimum-price" value="@Model.minimumPrice" />
+        </label>
+        <label>
+            Maximum Price:
+            <input type="number" min="0" step=".01" name="maximumPrice" id="maximum-price" value="@Model.maximumPrice" />
+        </label>
+        @foreach (string ingredient in Model.Menu.PossibleIngredients)
+        {
+            <label>
+                <input type="checkbox" class="exclude-ingredient" name="excludeIngredient" value="@ingredient" checked="@Model.menuCategory.Contains(@ingredient)" />
+                @ingredient
+            </label>
+        }
+    </form>
+</div>
 
 <a asp-page="Index">Go to Home page</a>
 <a asp-page="Menu">Go to Menu page</a>

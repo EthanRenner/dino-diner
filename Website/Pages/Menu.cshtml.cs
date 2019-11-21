@@ -13,9 +13,25 @@ namespace Website.Pages
     public class MenuModel : PageModel
     {
         public Menu Menu { get; } = new Menu();
+
+        [BindProperty]
+        public string search { get; set; }
+
+        [BindProperty]
+        public List<string> menuCategory { get; set; } = new List<string>();
+
+        [BindProperty]
+        public double minimumPrice { get; set; }
+
+        [BindProperty]
+        public double maximumPrice { get; set; }
+
+        [BindProperty]
+        public List<string> excludeIngredient { get; set; } = new List<string>();
         public void OnGet()
         {
 
         }
+
     }
 }
